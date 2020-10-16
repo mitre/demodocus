@@ -1,0 +1,10 @@
+Example Title: List_Easy_Accessible_1
+
+Description
+-------------------------
+This example has two boxes. The top has to be clicked 10 times to reach the finished state, whereas the bottom
+only has to be clicked once to reach the finished state. The bottom box is not available to keyboard users.
+
+Expected Results
+-------------------------
+All bots should be able to get to each state, but the keyboard bot should have to take a longer path.

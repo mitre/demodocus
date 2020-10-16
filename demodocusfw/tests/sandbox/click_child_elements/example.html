@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>A simple example with an unordered list containing an event handler. State differs depending on which
+    child element is clicked.
+</h2>
+<h4>Click List Elements In Order to Change State:</h4>
+<ul id="parentElem" >
+  <li value="Coffee">Coffee</li>
+  <li value= "Tea">Tea</li>
+  <li value= "Milk">Milk</li>
+</ul>
+<p id="myText">My favorite beverage is: </p>
+</body>
+<script>
+var mybev = "My favorite beverage is: ";
+
+var parentNode = document.getElementById('parentElem');
+
+parentNode.addEventListener("click",function(e) {
+
+    var elem = document.getElementById("myText");
+    console.log((e.target));
+    elem.innerHTML= mybev + e.target.textContent;
+
+});
+
+
+</script>
+</html>

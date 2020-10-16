@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Test</title>
+</head>
+<body>
+<button id="button">Click Me</button>
+<p id="populate"></p>
+
+<script>
+    let button = document.getElementById('button');
+    let para = document.getElementById('populate');
+
+    button.addEventListener('keydown', function (event){
+        console.log(event);
+        if(event.code === "ArrowDown" ||
+                event.code === "ArrowLeft" ||
+                event.code === "ArrowRight" ||
+                event.code === "ArrowUp" ||
+                event.code === "Space" ||
+                event.code === "Enter"
+        ){
+            para.innerText = 'Clicked the button';
+        }
+    });
+</script>
+</body>
+</html>

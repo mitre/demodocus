@@ -1,0 +1,6 @@
+id,entry_point,duration_sec,num_nodes,num_edges,users_crawled
+-1,http://127.0.0.1:8080/list/partaccessible_1/example.html,120.08,5,20,OmniUser
+-1,http://127.0.0.1:8080/list/partaccessible_1/example.html,120.09,5,20,OmniUser;VizKeyUser
+-1,http://127.0.0.1:8080/list/partaccessible_1/example.html,120.1,5,20,OmniUser;VizKeyUser;VizMouseKeyUser
+-1,http://127.0.0.1:8080/list/partaccessible_1/example.html,120.11,5,20,OmniUser;VizKeyUser;VizMouseKeyUser;SuperVizMouseKeyUser
+-1,http://127.0.0.1:8080/list/partaccessible_1/example.html,120.12,5,20,OmniUser;VizKeyUser;VizMouseKeyUser;SuperVizMouseKeyUser;LowVizMouseKeyUser

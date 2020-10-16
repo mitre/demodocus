@@ -1,0 +1,23 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="focusable" tabindex="0">Only visible on focus</div>
+        <div tabindex="0">Always visible</div>
+    </body>
+
+    <style>
+        #focusable {
+            top: -50;
+            position: absolute;
+            background: black;
+            color: white;
+        }
+
+        #focusable:focus {
+            transition: 0.5s;
+            top: 0;
+        }
+    </style>
+</html>

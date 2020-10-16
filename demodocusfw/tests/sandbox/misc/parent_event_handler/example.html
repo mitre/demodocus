@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="parent">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+<span id="selected"></span>
+
+</body>
+<script>
+    let parent = document.querySelector("#parent");
+    let selected = document.querySelector("#selected");
+
+    parent.onclick = function(event){
+        selected.innerHTML = event.target.innerHTML;
+    }
+</script>
+</html>

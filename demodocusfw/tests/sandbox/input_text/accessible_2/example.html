@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accessible 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <label for="username">Username:</label>
+    <input id="username" type="text">
+</div>
+<div>
+    <label for="email">Email</label>
+    <input id="email" type="email">
+</div>
+
+<div>
+    <label for="phone">Phone number:</label>
+    <input id="phone" type="text">
+</div>
+
+<button type="submit" id="submit">Submit</button>
+<span id="successful" style="color: green"></span>
+
+<script>
+    $(function () {
+        let username = $('#username');
+        let email = $('#email');
+        let phone = $('#phone');
+        let button = $('#submit');
+
+        button.on('click', function(){
+            clearMessages();
+
+            let formHasError = false;
+
+            if(username.val().length < 3){
+                createErrorMessage(username, "Username too short");
+                formHasError = true;
+            }
+
+            if(!email.val().includes('@')){
+                createErrorMessage(email, "Improper email")
+                formHasError = true;
+            }
+
+            let hasCharacters = false;
+            for(let number of phone.val()){
+                if(number < '0' || number > '9'){
+                    hasCharacters = true;
+                }
+            }
+
+            if(hasCharacters || phone.val().length < 10 || phone.val().length > 10){
+                createErrorMessage(phone, "Improper phone number");
+                formHasError = true;
+            }
+
+            if(!formHasError){
+                $('#successful').text("Form successfully submitted");
+            }
+
+        });
+
+        function createErrorMessage(element, errorText){
+            let span = $(document.createElement('SPAN'));
+            span.text(errorText);
+            span.addClass('error');
+            span.attr('aria-live', 'polite');
+            element.after(span);
+        }
+
+        function clearMessages() {
+            $('.error').remove();
+            $('#successful').text("");
+        }
+    });
+</script>
+</body>
+</html>

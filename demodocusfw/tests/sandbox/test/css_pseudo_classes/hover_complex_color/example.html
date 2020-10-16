@@ -1,0 +1,20 @@
+<html>
+    <head>
+
+    </head>
+
+<body>
+    <p>Color example that also includes using the :not pseudo operator</p>
+    
+    <p class="hover">Hover over me!</p>
+    <p id="nohover" class="hover">I shouldn't change color!</p>
+</body>
+
+<style>
+    .hover:hover:not(#nohover) {
+        color: red;
+        background: black;
+    }
+</style>
+    <!-- <script src="../pseudo_test.js"></script> -->
+</html>

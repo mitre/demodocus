@@ -1,0 +1,147 @@
+image: ubuntu:latest
+
+before_script:
+    - source ENV/bin/activate
+
+stages:
+  - build
+  - lint
+  - pages
+  - test
+
+build:
+  stage: build
+  artifacts:
+    untracked: true
+  before_script:
+  # Overwrites the global before_script at the top to create the environment
+    - python3 -m venv ENV
+    - source ENV/bin/activate
+    - python -V
+    - pip install --upgrade pip
+    - pip install -Ur requirements.txt
+  script:
+  # Pull chromedriver based on version of googlechrome binary (needs to change
+  #  to remain compliant)
+    - echo "Pulling chromedriver version -- $(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE_`expr substr "$(google-chrome --version)" 15 9`)"
+    - wget "https://chromedriver.storage.googleapis.com/$(curl https://chromedriver.storage.googleapis.com/LATEST_RELEASE_`expr substr "$(google-chrome --version)" 15 9`)/chromedriver_linux64.zip"
+    - unzip -d ENV/bin chromedriver_linux64.zip
+  retry: 2
+
+lint:
+  stage: lint
+  dependencies:
+    - build
+  script:
+    - pylint demodocusfw/ --rcfile .pylintrc --exit-zero
+
+pages:
+  stage: pages
+  dependencies:
+    - build
+  script:
+    - make
+    - cp -r build/site public
+  only:
+    - master
+  artifacts:
+    paths:
+      - public
+
+test_dom_manipulations:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/dom_manipulations.py
+  when: always
+
+test_template:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/test_template.py
+  when: always
+
+test_compare:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/compare.py
+  when: always
+
+test_reachable:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/reachable.py
+  when: always
+
+test_selenium_integration:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/selenium_integration.py
+  when: always
+
+test_web_access_chrome:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/test_web_access_chrome.py
+  when: always
+
+test_event_tracking:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/event_tracking.py
+  when: always
+
+test_animation:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/animation.py
+  when: always
+
+test_crawler:
+  stage: test
+  dependencies:
+    - build
+  script: DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/test_crawler.py
+  when: always
+
+test_keyboard_crawl:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/keyboard_crawl.py
+  when: always
+
+test_crawl_graph:
+  stage: test
+  dependencies:
+    - build
+  script: DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/crawl_graph.py
+  when: always
+
+test_reduced_crawl:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/reduced_crawl.py
+  when: always
+
+test_analysis:
+  stage: test
+  dependencies:
+    - build
+  script: DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/test_analysis.py
+  when: always
+
+test_keyboard_eval:
+  stage: test
+  dependencies:
+    - build
+  script: python -m unittest demodocusfw/tests/keyboard_eval.py
+  when: always

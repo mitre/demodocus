@@ -1,0 +1,4 @@
+﻿entry_point,users_crawled,total_runtime,build_runtime,num_states,num_edges,num_dynamic_states,VizKeyUser_num_states,VizKeyUser_num_edges,VizKeyUser_num_dead_end_edges,VizMouseKeyUser_num_states,VizMouseKeyUser_num_edges,VizMouseKeyUser_num_dead_end_edges,SuperVizMouseKeyUser_num_states,SuperVizMouseKeyUser_num_edges,SuperVizMouseKeyUser_num_dead_end_edges,LowVizMouseKeyUser_num_states,LowVizMouseKeyUser_num_edges,LowVizMouseKeyUser_num_dead_end_edges,num_mouseover,num_clicks
+http://127.0.0.1:8080/perceivability_example/example.html,human,21600,21600,7,11,6,3,2,4,3,4,4,7,12,0,3,4,4,3,0
+http://127.0.0.1:8080/test/perceivable/example.html,human,18000,18000,3,9,2,2,2,4,2,4,4,3,12,0,2,4,4,3,1
+http://127.0.0.1:8080/list/partaccessible_1/example.html,human,14400,14400,4,15,3,4,12,0,5,20,0,5,20,0,5,20,0,2,0

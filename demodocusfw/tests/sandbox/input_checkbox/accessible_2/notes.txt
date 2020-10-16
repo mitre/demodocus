@@ -1,0 +1,1 @@
+Now we use an alert to display success instead of text.

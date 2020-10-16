@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wierd Path</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="area-1" class="clickable" tabindex="0"></div>
+<div id="area-2" class="clickable"></div>
+<div id="finisher"></div>
+
+</body>
+
+<style>
+    #area-1 {
+        height: 50px;
+        width: 100px;
+        background: blue;
+        color: white;
+    }
+
+    #area-2 {
+        height: 50px;
+        width: 100px;
+        background: green;
+    }
+</style>
+
+<script>
+    $(function(){
+        let area1 = $('#area-1');
+        let area2 = $('#area-2');
+        let finisher = $('#finisher');
+
+        let counter1 = 0;
+
+        area1.on('click keydown', function(){
+
+            if(counter1 >= 10){
+                finisher.text('finished');
+                return;
+            }
+
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' ')) {
+                counter1++;
+                area1.text(counter1);
+            }
+        });
+
+        area2.on('click keydown', function(){
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' ')) {
+                counter1 = 10;
+                area1.text(10);
+                finisher.text('finished');
+            }
+        });
+
+        console.log(document.getElementById('area-2').onclick);
+
+
+    })
+</script>
+</html>

@@ -1,0 +1,122 @@
+{
+  "url": "http://127.0.0.1:8080/list/partaccessible_1/example.html",
+  "tab_dict": {
+    "/html/body/ul/li[1]": {
+      "tab_place": 0,
+      "num_visits": 1,
+      "position": {
+        "x": 48,
+        "y": 158
+      },
+      "unfocused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(0, 0, 0) none 0px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      },
+      "focused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(229, 151, 0) auto 1px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    },
+    "/html/body/ul/li[2]": {
+      "tab_place": 1,
+      "num_visits": 1,
+      "position": {
+        "x": 48,
+        "y": 216
+      },
+      "unfocused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(0, 0, 0) none 0px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      },
+      "focused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(229, 151, 0) auto 1px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    },
+    "/html/body/ul/li[3]": {
+      "tab_place": 2,
+      "num_visits": 1,
+      "position": {
+        "x": 48,
+        "y": 274
+      },
+      "unfocused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(0, 0, 0) none 0px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      },
+      "focused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(229, 151, 0) auto 1px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    },
+    "/html/body/ul/li[4]": {
+      "tab_place": 3,
+      "num_visits": 1,
+      "position": {
+        "x": 48,
+        "y": 332
+      },
+      "unfocused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(0, 0, 0) none 0px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      },
+      "focused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(229, 151, 0) auto 1px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    },
+    "/html/body": {
+      "tab_place": 4,
+      "num_visits": 1,
+      "position": {
+        "x": 8,
+        "y": 50
+      },
+      "unfocused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(0, 0, 0) none 0px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      },
+      "focused_style_info": {
+        "border-style": "0px none rgb(0, 0, 0)",
+        "outline-style": "rgb(0, 0, 0) none 0px",
+        "el-color": "rgb(0, 0, 0)",
+        "el-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+        "parent-background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box"
+      }
+    }
+  },
+  "tab_els_by_index": [
+    "/html/body/ul/li[1]",
+    "/html/body/ul/li[2]",
+    "/html/body/ul/li[3]",
+    "/html/body/ul/li[4]",
+    "/html/body"
+  ]
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+        <meta charset="UTF-8">
+        <title>Randomized Button Location</title>
+        <link rel="stylesheet" type="text/css" href="calibration_style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <style type="text/css">
+            html, body {
+                height: 100%;
+                margin: 0px;
+            }
+        </style>
+</head>
+<p>Randomized button locations, press buttons and check console log</p>
+<div style="height: 100%"">
+    <div style="height: 33%">
+            <div class="col-sm-3">
+                <button type="button" class="hidden_button" id="button1" onclick="my_onClick()">Click Me!</button>
+
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="hidden_button" id="button2" onclick="my_onClick()">Click Me!</button>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="hidden_button" id="button3" onclick="my_onClick()">Click Me!</button>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" class="hidden_button" id="button4" onclick="my_onClick()">Click Me!</button>
+            </div>
+        </div>
+    <div style="height: 33%">
+            <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button5" onclick="my_onClick()">Click Me!</button>
+    
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button6" onclick="my_onClick()">Click Me!</button>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button7" onclick="my_onClick()">Click Me!</button>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button8" onclick="my_onClick()">Click Me!</button>
+                </div>
+    </div>
+    <div style="height:33%">
+            <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button9" onclick="my_onClick()">Click Me!</button>
+    
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button10" onclick="my_onClick()">Click Me!</button>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button11" onclick="my_onClick()">Click Me!</button>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="hidden_button" id="button12" onclick="my_onClick()">Click Me!</button>
+                </div>
+    </div>
+</div>
+
+</body>
+<script>
+var mystart = false;
+var myarr = [0,1,2,3,4,5,6,7,8,9,10,11];
+var indexkeeper = 12;
+var buttonstr = "button";
+var startTime;
+var endTime;
+var timearr = [];
+for(var i = 0; i < 8; i++){
+    var spliceindex = Math.floor(Math.random()*indexkeeper);
+    indexkeeper = indexkeeper - 1;
+    myarr.splice(spliceindex, 1);
+}
+console.log(myarr[1].toString());
+console.log(myarr);
+for(var i = 0; i < 4; i++){
+    var buttonelem = document.getElementById(buttonstr.concat((myarr[i]+1).toString()));
+    buttonelem.className = "visible_button";
+}
+
+function my_onClick(){
+    if(!mystart) {
+        startTime = new Date().getSeconds();
+        mystart = true;
+    } else {
+        endTime = new Date().getSeconds();
+        time_to_completion = ((endTime - startTime) % 60); 
+        if(time_to_completion < 0) {
+            time_to_completion = time_to_completion + 60;
+        }
+        timearr.push(time_to_completion)
+        startTime = endTime;
+        console.log(time_to_completion);
+    }
+
+
+}
+
+
+
+
+
+</script>
+</html>

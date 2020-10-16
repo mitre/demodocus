@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <button id="delayed">Delayed Response</button>
+    <span id="result"></span>
+</body>
+<script>
+    let delayed = document.querySelector('#delayed');
+    let result = document.querySelector('#result');
+
+    delayed.onclick = function(){
+        setTimeout(function(){
+            result.innerHTML = "Finally responding.";
+        }, 2000);
+    }
+</script>
+
+</html>

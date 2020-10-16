@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stub State Test</title>
+</head>
+<body>
+    <div>
+        <button id="button1">Link</button>
+    </div>
+    <div>
+        <button id="button2">Click Me</button>
+        <p id="populate2"></p>
+    </div>
+
+<script>
+    let button1 = document.getElementById('button1');
+    button1.onclick = function(){
+        window.open('../../list/partaccessible_1/example.html');
+    }
+
+    let button2 = document.getElementById('button2');
+    let para2 = document.getElementById('populate2');
+    button2.onclick = function(){
+        para2.innerHTML = "You have clicked button2";
+    }
+</script>
+</body>
+</html>

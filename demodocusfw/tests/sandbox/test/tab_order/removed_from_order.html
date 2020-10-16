@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Accessible List</title>
+</head>
+
+<body>
+    <p>Cake ingredients</p>
+    <ul>
+        <li class="ingredient" tabindex="1">Eggs</li>
+        <li class="ingredient" tabindex="2">Flour</li>
+        <li class="ingredient" tabindex="3">Milk</li>
+        <li class="ingredient" tabindex="4">Icing</li>
+    </ul>
+
+</body>
+
+<script>
+    var el = document.querySelectorAll("li");
+    var el1 = el[1];
+    console.log(el);
+
+    el[0].addEventListener('focus', () => {
+        el1.setAttribute("tabindex", 2);
+    });
+
+    el[2].addEventListener('focus', () => {
+        console.log("Removing attribute.");
+        el1.removeAttribute("tabindex");
+    });
+
+</script>
+
+</html>

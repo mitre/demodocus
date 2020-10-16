@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form onsubmit="declareSuccess(event)">
+    <fieldset>
+        <legend>Favorite Colors</legend>
+        <label>
+            <input type="checkbox" name="colors" value="red">
+            Red
+        </label>
+        <label>
+            <input type="checkbox" name="colors" value="green">
+            Green
+        </label>
+        <label>
+            <input type="checkbox" name="colors" value="rainbow">
+            Rainbow
+        </label>
+    </fieldset>
+    <input type="submit" id="submit">
+    <button id="reset">Reset</button>
+    <span id="success"></span>
+</form>
+
+<script>
+    let button = document.querySelector("#submit");
+    let reset = document.querySelector("#reset");
+    let success = document.querySelector("#success");
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    reset.onclick = function(event){
+        checkboxes.forEach(function(box){
+            box.checked = false;
+        });
+
+        event.preventDefault();
+        event.stopPropagation();
+    };
+
+    function declareSuccess(event){
+        success.innerHTML = "You have successfully submitted your form.";
+        event.preventDefault();
+        event.stopPropagation()
+    }
+</script>
+
+</body>
+</html>

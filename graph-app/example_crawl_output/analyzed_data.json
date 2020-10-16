@@ -1,0 +1,87 @@
+{
+  "els_states": {
+    "num_valid_tab_states": 5,
+    "num_states": 5,
+    "els_with_problem_borders": {},
+    "keyboard_traps": {},
+    "avg_num_els_per_state": 4.0,
+    "unique_el_xpaths": [
+      "/html/body/ul/li[1]",
+      "/html/body/ul/li[2]",
+      "/html/body/ul/li[4]",
+      "/html/body/ul/li[3]"
+    ]
+  },
+  "network_metrics": {
+    "VizKeyUser": {
+      "crawluser_nodes": 4,
+      "builduser_nodes": 5,
+      "crawluser_stub_nodes": 0,
+      "builduser_stub_nodes": 0,
+      "crawluser_edges": 12,
+      "builduser_edges": 20,
+      "crawluser_avg_indeg": 3.0,
+      "crawluser_avg_outdeg": 3.0,
+      "builduser_avg_indeg": 4.0,
+      "builduser_avg_outdeg": 4.0,
+      "crawluser_is_strongly_connected": true,
+      "builduser_is_strongly_connected": true,
+      "avg_path_len_incr": 0.0,
+      "avg_path_dijkstra_diff": 0.17
+    },
+    "VizMouseKeyUser": {
+      "crawluser_nodes": 5,
+      "builduser_nodes": 5,
+      "crawluser_stub_nodes": 0,
+      "builduser_stub_nodes": 0,
+      "crawluser_edges": 20,
+      "builduser_edges": 20,
+      "crawluser_avg_indeg": 4.0,
+      "crawluser_avg_outdeg": 4.0,
+      "builduser_avg_indeg": 4.0,
+      "builduser_avg_outdeg": 4.0,
+      "crawluser_is_strongly_connected": true,
+      "builduser_is_strongly_connected": true,
+      "avg_path_len_incr": 0.0,
+      "avg_path_dijkstra_diff": 0.2
+    },
+    "SuperVizMouseKeyUser": {
+      "crawluser_nodes": 5,
+      "builduser_nodes": 5,
+      "crawluser_stub_nodes": 0,
+      "builduser_stub_nodes": 0,
+      "crawluser_edges": 20,
+      "builduser_edges": 20,
+      "crawluser_avg_indeg": 4.0,
+      "crawluser_avg_outdeg": 4.0,
+      "builduser_avg_indeg": 4.0,
+      "builduser_avg_outdeg": 4.0,
+      "crawluser_is_strongly_connected": true,
+      "builduser_is_strongly_connected": true,
+      "avg_path_len_incr": 0.0,
+      "avg_path_dijkstra_diff": 0.2
+    },
+    "LowVizMouseKeyUser": {
+      "crawluser_nodes": 5,
+      "builduser_nodes": 5,
+      "crawluser_stub_nodes": 0,
+      "builduser_stub_nodes": 0,
+      "crawluser_edges": 20,
+      "builduser_edges": 20,
+      "crawluser_avg_indeg": 4.0,
+      "crawluser_avg_outdeg": 4.0,
+      "builduser_avg_indeg": 4.0,
+      "builduser_avg_outdeg": 4.0,
+      "crawluser_is_strongly_connected": true,
+      "builduser_is_strongly_connected": true,
+      "avg_path_len_incr": 0.0,
+      "avg_path_dijkstra_diff": 0.2
+    }
+  },
+  "accessibility": {
+    "VizKeyUser": {},
+    "VizMouseKeyUser": {},
+    "SuperVizMouseKeyUser": {},
+    "LowVizMouseKeyUser": {}
+  }
+}

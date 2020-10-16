@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <label>First Name:</label>
+        <input id="input" type="text">
+    </body>
+    <script>
+        let body = document.querySelector('body');
+
+        let newLabel = document.createElement('LABEL');
+        newLabel.textContent = "Last Name:"
+        newLabel.setAttribute('for', 'lastName');
+
+        let newInput = document.createElement('INPUT');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('id', 'lastName');
+
+        body.appendChild(newLabel);
+        body.appendChild(newInput);
+    </script>
+</html>

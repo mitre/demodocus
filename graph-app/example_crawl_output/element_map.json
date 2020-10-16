@@ -1,0 +1,40 @@
+{
+  "0": {
+    "src": "build/crawls/20200825T204704Z/screenshots/state-0.png",
+    "violations": [
+      {
+        "type": "atomic",
+        "level": "error",
+        "category": "S.C. 2.1.1",
+        "element": {
+          "x": 48,
+          "y": 332,
+          "width": 1864,
+          "height": 58,
+          "xpath": "/html/body/ul/li[4]",
+          "text": "Sugar",
+          "tag": "li"
+        },
+        "group_id": 0,
+        "replay": "OmniUser: ",
+        "code": "<li xmlns:html=\"http://www.w3.org/1999/xhtml\" class=\"ingredient\" tabindex=\"0\" demod_click=\"1\" demod_reachable=\"true\" demod_width=\"1864px\" demod_height=\"58px\" demod_opacity=\"1\" demod_transform=\"none\" demod_left=\"48\" demod_top=\"332\">\n        Sugar\n        <ul style=\"display: none;\" demod_reachable=\"false\" demod_width=\"auto\" demod_height=\"auto\" demod_opacity=\"1\" demod_transform=\"none\" demod_left=\"0\" demod_top=\"0\">\n            <li demod_reachable=\"false\" demod_width=\"auto\" demod_height=\"auto\" demod_opacity=\"1\" demod_transform=\"none\" demod_left=\"0\" demod_top=\"0\">Quantity: 2 cups</li>\n            <li demod_reachable=\"false\" demod_width=\"auto\" demod_height=\"auto\" demod_opacity=\"1\" demod_transform=\"none\" demod_left=\"0\" demod_top=\"0\">Type: White</li>\n        </ul>\n    </li>\n"
+      }
+    ]
+  },
+  "1": {
+    "src": "build/crawls/20200825T204704Z/screenshots/state-1.png",
+    "violations": []
+  },
+  "2": {
+    "src": "build/crawls/20200825T204704Z/screenshots/state-2.png",
+    "violations": []
+  },
+  "3": {
+    "src": "build/crawls/20200825T204704Z/screenshots/state-3.png",
+    "violations": []
+  },
+  "4": {
+    "src": "build/crawls/20200825T204704Z/screenshots/state-4.png",
+    "violations": []
+  }
+}

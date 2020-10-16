@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input example</title>
+</head>
+<body>
+    <label for="username">Username:</label>
+    <input id="username" type="text">
+    <span id="alertMessage"></span>
+    <button type="submit" id="submit">Submit</button>
+
+    <script>
+        let input = document.getElementById('username');
+        let alert = document.getElementById('alertMessage');
+        let button = document.getElementById('submit');
+
+        button.onclick = function()
+        {
+            let inputText = input.value;
+
+            if(inputText.length > 3)
+            {
+                alert.innerText = "Congratulations you have a good username";
+            }
+            else
+            {
+                alert.innerText = "Boo, you have entered a bad username";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Test</title>
+    <link rel="stylesheet" type="text/css" href="perceivability_style.css">
+</head>
+<body>
+    <div>
+        <button id="button1">Click Me</button>
+        <p id="populate1"></p>
+    </div>
+    <div>
+        <button id="button2">Click Me</button>
+        <p id="populate2"></p>
+    </div>
+    <div>
+        <button id="button3" >Click Me</button>
+        <p id="populate3"></p>
+    </div>
+    <div>
+        <button id="button4" >Click Me</button>
+        <p id="populate4"></p>
+    </div>
+    <div>
+        <button id="button5">Click Me</button>
+        <p id="populate5"></p>
+    </div>
+    <div>
+        <button id="button6">Click Me</button>
+        <p id="populate6"></p>
+    </div>
+   
+
+
+<script>
+    let button1 = document.getElementById('button1');
+    let para1 = document.getElementById('populate1');
+    let button2 = document.getElementById('button2');
+    let para2 = document.getElementById('populate2');
+    let button3 = document.getElementById('button3');
+    let para3 = document.getElementById('populate3');
+    let button4 = document.getElementById('button4');
+    let para4 = document.getElementById('populate4');
+    let button5 = document.getElementById('button5');
+    let para5 = document.getElementById('populate5');
+    let button6 = document.getElementById('button6');
+    let para6 = document.getElementById('populate6');
+   
+
+    button1.onclick = function(){
+        para1.innerHTML = "You have clicked button1";
+    }
+    button2.onclick = function(){
+        para2.innerHTML = "You have clicked button2";
+    }
+    button3.onclick = function(){
+        para3.innerHTML = "You have clicked button3";
+    }
+    button4.onclick = function(){
+        para4.innerHTML = "You have clicked button4";
+    }
+    button5.onclick = function(){
+        para5.innerHTML = "You have clicked button5";
+    }
+    button6.onclick = function(){
+        para6.innerHTML = "You have clicked button6";
+    }
+ 
+
+</script>
+</body>
+</html>

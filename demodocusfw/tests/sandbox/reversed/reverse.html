@@ -1,0 +1,34 @@
+<html>
+
+<head>
+
+</head>
+<body>
+
+  <div id="reversable" tabindex="0">
+    0
+  </div>
+</body>
+
+<script>
+  let reversable = document.querySelector("#reversable");
+
+  reversable.addEventListener("keyup", (event) => {
+
+    let currentNum =  Number(reversable.textContent);
+    if(event.key == "ArrowRight") {
+
+      if (currentNum < 10) {
+        currentNum += 1;
+        reversable.textContent = currentNum;
+      }
+    }
+    else if (event.key == "ArrowLeft") {
+      if (currentNum > 0) {
+        currentNum -= 1;
+        reversable.textContent = currentNum;
+      }
+    }
+  });
+</script>
+</html>

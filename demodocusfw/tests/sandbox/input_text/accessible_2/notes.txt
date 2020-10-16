@@ -1,0 +1,11 @@
+Example Title: Input
+
+Description:
+--------------------------------------
+In this example the user enters some text into fields for username, email, and phone number and then hits the submit button.
+There are error messages associated with each. The username must be longer than 3 characters. Email must have an @, and
+phone number should be all numbers and be 10 in length.
+
+Expected Results:
+--------------------------------------
+As of right now each bot should be able to find all states.

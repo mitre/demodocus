@@ -1,0 +1,1 @@
+It is now a form, and will submit to this page when done (basically causes reloading).

@@ -1,0 +1,34 @@
+#button1 {
+    font-size: 15pt; 
+    color: white; 
+    background-color: #B4BEFF;
+    height: 70px
+}
+#button2 {
+    font-size: 22pt; 
+    color: white; 
+    background-color: #B4BEFF;
+    height: 70px
+}
+#button3 {
+    font-size: 15pt; 
+    color: black; 
+    background-color: white;
+    height: 70px
+}
+#button4 {
+    font-size: 22pt; 
+    color: black; 
+    background-color: white;
+    height: 70px
+}
+#button5 {
+    width: 40px
+}
+#button6 {
+    font-size: 22pt;    
+    color: black; 
+    background-color: #B4BEFF;
+    border: none;
+}
+

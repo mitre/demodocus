@@ -1,0 +1,11 @@
+Example Title: Input
+
+Description:
+--------------------------------------
+In this example the user enters some text into a field and hits the submit button. If the text is longer
+than 3 characters it prints a congrats message, else it prints an error message.
+
+Expected Results:
+--------------------------------------
+All bots (with the execption of the blind bot) should be able to find all states of this example. There also should
+be multiple edges between states since user can use both keyboar commands and click to complete the action.

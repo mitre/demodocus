@@ -1,0 +1,1 @@
+Catches the submit event and just prints out success text

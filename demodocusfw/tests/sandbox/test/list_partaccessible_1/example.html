@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accessible List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>Cake ingredients</p>
+<ul>
+    <li class="ingredient" tabindex="0">
+        Eggs
+        <ul style="display: none;">
+            <li>Quantity: 4 large eggs</li>
+            <li>Type: From golden hens</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Sugar
+        <ul style="display: none;">
+            <li>Quantity: 2 cups</li>
+            <li>Type: White</li>
+        </ul>
+    </li>
+</ul>
+
+
+<style>
+    .ingredient {
+        cursor: pointer;
+    }
+
+    .ingredient > ul {
+        display: none;
+        cursor: text;
+    }
+</style>
+
+<script>
+    $(function(){
+        let ingredients = $('.ingredient');
+
+        $(ingredients[0]).on('click keyup', toggleChildren);
+        $(ingredients[1]).on('click', toggleChildren);
+
+        function toggleChildren(event){
+            console.log(event);
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' '))
+            {
+                $(event.target).children('ul').toggle();
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html lang="en" demod_events="true"><head>
+    <meta charset="utf-8">
+    <title>Accessible List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css"></style></head>
+<body demod_reachable="true">
+<p demod_reachable="true" demod_width="1904px" demod_height="58px" demod_opacity="1" demod_transform="none" demod_left="8" demod_top="50">Cake ingredients</p>
+<ul demod_reachable="true" demod_width="1864px" demod_height="232px" demod_opacity="1" demod_transform="none" demod_left="8" demod_top="158">
+    <li class="ingredient" tabindex="0" demod_keyup="1" demod_click="1" demod_reachable="true" demod_width="1864px" demod_height="58px" demod_opacity="1" demod_transform="none" demod_left="48" demod_top="158">
+        Eggs
+        <ul style="display: none;" demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Quantity: 4 large eggs</li>
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Type: From golden hens</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0" demod_keyup="1" demod_click="1" demod_reachable="true" demod_width="1864px" demod_height="58px" demod_opacity="1" demod_transform="none" demod_left="48" demod_top="216">
+        Flour
+        <ul style="display: none;" demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Quantity: 3 Cups</li>
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Type: All-purpose</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0" demod_keyup="1" demod_click="1" demod_reachable="true" demod_width="1864px" demod_height="58px" demod_opacity="1" demod_transform="none" demod_left="48" demod_top="274">
+        Baking Powder
+        <ul style="display: none;" demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Quantity: 2 teaspoons</li>
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Type: Powdery</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0" demod_click="1" demod_reachable="true" demod_width="1864px" demod_height="58px" demod_opacity="1" demod_transform="none" demod_left="48" demod_top="332">
+        Sugar
+        <ul style="display: none;" demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Quantity: 2 cups</li>
+            <li demod_reachable="false" demod_width="auto" demod_height="auto" demod_opacity="1" demod_transform="none" demod_left="0" demod_top="0">Type: White</li>
+        </ul>
+    </li>
+</ul>
+<style demod_reachable="false">
+    body {
+        font-size: 50px;
+    }
+    .ingredient {
+        cursor: pointer;
+    }
+    .ingredient > ul {
+        display: none;
+        cursor: text;
+    }
+</style>
+<script demod_reachable="false">
+    $(function(){
+        let ingredients = $('.ingredient');
+        $(ingredients[0]).on('click keyup', toggleChildren);
+        $(ingredients[1]).on('click keyup', toggleChildren);
+        $(ingredients[2]).on('click keyup', toggleChildren);
+        $(ingredients[3]).on('click', toggleChildren);
+        function toggleChildren(event){
+            console.log(event);
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' '))
+            {
+                $(event.target).children('ul').toggle();
+            }
+        }
+    });
+</script>
+</body></html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Accessible List</title>
+</head>
+
+<body>
+    <p>Cake ingredients</p>
+    <ul id="list"></ul>
+
+</body>
+
+<script>
+    let list = document.getElementById("list");
+
+    for (let i = 0; i < 250; i++)
+    {
+        let element = document.createElement("li");
+        element.tabIndex = 0;
+        element.textContent = i;
+        list.appendChild(element);
+    }
+</script>
+
+</html>

@@ -1,0 +1,50 @@
+ARGV = ['/absolute/path/to/demodocus-framework/crawler.py', 'http://127.0.0.1:8080/list/partaccessible_1/example.html', '--mode', 'demodocusfw.config.mode_accessibility_vision_users']
+
+ACCESS_CLASS = <class 'demodocusfw.web.web_access.ChromeWebAccess'>
+
+ANALYZER_CLASS = <class 'demodocusfw.web.analysis.WebAccessAnalyzer'>
+
+BUILD_DATA = <class 'demodocusfw.web.build_data.WebBuildData'>
+
+BUILD_USER = OmniUser
+
+COMPARE_PIPELINE = [(<demodocusfw.comparator.StrictComparator object at 0x7fe1407b6ac0>, <CompareFlag.STOP_IF_TRUE: 1>), (<demodocusfw.web.comparator.DOMStructureComparator object at 0x7fe1407b6b80>, <CompareFlag.STOP_IF_FALSE: 2>), (<demodocusfw.web.comparator.TextComparator object at 0x7fe1407b6a00>, <CompareFlag.STOP_IF_FALSE: 2>)]
+
+CRAWL_USERS = [<demodocusfw.user.UserModel object at 0x7fe1475a1220>, <demodocusfw.user.UserModel object at 0x7fe1475a1250>, <demodocusfw.user.UserModel object at 0x7fe1475a1520>, <demodocusfw.user.UserModel object at 0x7fe1475a17c0>]
+
+DELAY = 0
+
+EDGE_METRICS = <class 'demodocusfw.web.accessibility.edge.AccessibilityEdgeMetrics'>
+
+HEADLESS = True
+
+LOG_LEVEL = 20
+
+LOG_TO_STDOUT = True
+
+MULTI = False
+
+NUM_REVISITS = 2
+
+NUM_THREADS = 1
+
+OUTPUT_DIR = build/crawls/20200825T204704Z
+
+OUTPUT_FILE = crawl.log
+
+PAGE_CHANGE_NUM_LOADS = 10
+
+PAGE_CHANGE_THRESHOLD = 8
+
+PAGE_CHANGE_TIMEOUT = 20
+
+REDUCED_CRAWL = True
+
+REPORTS = ['all']
+
+SCREENSHOTS = True
+
+STATE_DATA = <class 'demodocusfw.web.state.WebStateData'>
+
+WINDOW_SIZE = (1920, 1080)
+

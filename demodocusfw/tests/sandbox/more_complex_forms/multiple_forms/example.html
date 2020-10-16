@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Forms</h2>
+<p>A simple example with a form that opens a new tab and form on submission. </p>
+<form action="../autocomplete/example.html" target="_blank" label="submit_to_open_different">
+    <p>Fill out the form and submit to open up a new tab with a different form</p>
+    <label>First name:
+<br>
+    <input type="text" name="firstname" value="">
+</label>
+<br>
+    <label>Last name:
+<br>
+  <input type="text" name="lastname" value="">
+    </label>
+  <br>
+  <label>Middle Initial:
+<br>
+    <input type="text" name="middleinitial" value="">
+    </label>
+<br>
+    <label>Submit
+        <input type="submit" value="Submit">
+    </label>
+</form> 
+    
+<script>
+    let button1 = document.getElementById('submitbutton');
+    let para1 = document.getElementById('populate1');
+    let mydatalist = document.getElementById('plays')
+    let button2 = document.getElementById('button2');
+    let para2 = document.getElementById('populate2');
+    let myvar = true;
+    button1.onclick = function(){
+        para1.innerHTML = "You have clicked the submit button";
+        
+    }
+    button2.onclick = function(){
+        if(myvar) {
+            para2.innerHTML = "You have clicked button2";
+            myvar = false;
+        } else {
+            para2.innerHTML = "";
+            myvar = true;
+        }
+    }
+
+</script>
+</body>
+</html>

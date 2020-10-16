@@ -1,0 +1,20 @@
+site_name: Demodocus Framework
+nav:
+    - Home: index.md
+    - Overview: overview.md
+    - Install:
+        - Setup: setup.md
+        - Configuration: configuration.md
+        - 'Running Crawls': running-crawls.md
+    - Architecture:
+        - Introduction: introduction.md
+        - Crawling: crawling.md
+        - 'HTML Templating': template.md
+        - 'User Models': user-models.md
+        - Analysis: analysis.md
+    - Other:
+        - Interfaces: interfaces.md
+        - Developing: developing.md
+theme: readthedocs
+docs: docs/
+site_dir: build/site/

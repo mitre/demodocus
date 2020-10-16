@@ -1,0 +1,28 @@
+digraph {
+
+    edge [dir=none];
+
+    "Keyboard User";
+
+    subgraph cluster0 {
+        "Keyboard Ability";
+        "Vision Ability";
+    }
+
+    "Keyboard User" -> "Keyboard Ability" [label = "has"];
+    "Keyboard User" -> "Vision Ability";
+
+    subgraph cluster1 {
+        "Perceive()";
+        "Navigate()";
+        "Act()";
+    }
+
+    "Keyboard Ability" -> "Perceive()" [label = "implements"];
+    "Keyboard Ability" -> "Navigate()";
+    "Keyboard Ability" -> "Act()";
+
+    "Act()" -> "click()" [label = "can do"];
+    "Act()" -> "keyup()" [label = "can do"];
+
+}

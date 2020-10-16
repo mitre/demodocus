@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Image Resize On MouseEvent</title>
+    
+</head>
+<h2>A simple example with an event when the mouse is moved on and off of the image. </h2>
+<body>
+    <label for="myImg">Mouse on and off the image in order to trigger events</label>
+<img onmouseover="makeBig(this)" onmouseout="makeNormal(this)" 
+    id="myImg" border="0" src="../../mouse_events/myMSPaint.jpg" width="64" height="64">
+
+
+
+<script>
+function makeBig(x) {
+    x.style.height = "128px";
+    x.style.width = "128px";
+}
+
+function makeNormal(x) {
+    x.style.height = "64px";
+    x.style.width = "64px";
+    
+}
+</script>
+
+</body>
+</html>

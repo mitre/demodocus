@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Test</title>
+</head>
+<body>
+<button id="button">Click Me</button>
+<p id="populate"></p>
+
+<script>
+    let button = document.getElementById('button');
+    let para = document.getElementById('populate');
+
+    button.addEventListener('keydown', function (event){
+        console.log(event);
+        if(event.which === 37 ||
+                event.which === 38 ||
+                event.which === 39 ||
+                event.which === 40 ||
+                event.which === 32 ||
+                event.which === 13
+        ){
+            para.innerText = 'Clicked the button';
+        }
+    });
+</script>
+</body>
+</html>

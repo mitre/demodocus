@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .dropdown-content {
+      display: none;
+    }
+
+    @media screen and (min-width: 200px) {
+      .dropdown:hover > ul {
+        display: block;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <p>Uses a media query for rule application. Tests that we can accurately parse this. </p>
+  <ul>
+    <li class="dropdown">Hover over me
+      <ul class="dropdown-content">
+        <li>List item 1</li>
+        <li>List item 2</li>
+      </ul> 
+    </li>
+
+    <li class="dropdown">Hover over me 2
+      <ul class="dropdown-content">
+        <li>List item 1</li>
+        <li>List item 2</li>
+      </ul> 
+    </li>
+  </ul>
+
+</body>
+<!-- <script src="../pseudo_test.js"></script> -->
+
+</html>

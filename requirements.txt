@@ -1,0 +1,16 @@
+requests
+doxypypy
+jellyfish
+lxml
+matplotlib
+mkdocs
+scipy
+networkx
+numpy
+pandas
+pylint
+selenium
+tabulate
+gitpython
+html5lib
+beautifulsoup4

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form onsubmit="checkForm(event)">
+    <fieldset>
+        <legend>Favorite Colors</legend>
+        <label>
+            <input type="radio" name="colors" value="red">
+            Red
+        </label>
+        <label>
+            <input type="radio" name="colors" value="green">
+            Green
+        </label>
+        <label>
+            <input type="radio" name="colors" value="rainbow">
+            Rainbow
+        </label>
+    </fieldset>
+    <input type="submit" id="submit">
+    <button id="reset">Reset</button>
+    <span id="notify"></span>
+</form>
+
+<script>
+    let button = document.querySelector("#submit");
+    let notify = document.querySelector("#notify");
+    let radioButtons = document.querySelectorAll('input[type="radio"]');
+    let reset = document.querySelector('#reset');
+
+    function checkForm(event){
+        if(radioButtonSelected()){
+            notify.innerHTML = "You have successfully submitted your form.";
+        }
+        else{
+            notify.innerHTML = "Error, you must select one.";
+        }
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    reset.onclick = function(event){
+        for(i = 0; i < radioButtons.length; i++){
+            radioButtons[i].checked = false;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+    };
+
+    function radioButtonSelected() {
+        for(i = 0; i < radioButtons.length; i++){
+            if(radioButtons[i].checked)
+                return true;
+        }
+    }
+</script>
+
+</body>
+</html>

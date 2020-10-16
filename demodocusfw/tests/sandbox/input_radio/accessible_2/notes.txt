@@ -1,0 +1,1 @@
+You are required to select a radio buttons to achieve the success state.

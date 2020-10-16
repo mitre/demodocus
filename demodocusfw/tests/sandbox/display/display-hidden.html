@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>Hidden area below.</p>
+<p id="clickable" style="visibility: hidden;">This text is hidden.</p>
+<p>Hidden text above.</p>
+
+
+<script>
+    $(function () {
+        hidden = $('#clickable');
+        hidden.on('mouseover', function () {
+            alert("Being clicked");
+            hidden.css('visibility', '');
+        })
+    })
+</script>
+</body>
+</html>

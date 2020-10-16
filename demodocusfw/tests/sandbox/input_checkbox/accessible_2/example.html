@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<fieldset>
+    <legend>Favorite Colors</legend>
+        <label>
+            <input type="checkbox" name="colors" value="red">
+            Red
+        </label>
+        <label>
+            <input type="checkbox" name="colors" value="green">
+            Green
+        </label>
+        <label>
+            <input type="checkbox" name="colors" value="rainbow">
+            Rainbow
+        </label>
+</fieldset>
+<button type="submit" id="submit">Submit</button>
+
+<script>
+    let button = document.querySelector("#submit");
+    
+    button.onclick = function(){
+        alert("You submitted successfully!");
+    }
+</script>
+
+</body>
+</html>

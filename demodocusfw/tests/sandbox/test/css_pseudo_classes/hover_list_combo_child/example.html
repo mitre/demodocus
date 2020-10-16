@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown:hover ul, .dropdown2:hover > ul {
+      display: block;
+    }
+  </style>
+
+</head>
+
+<body>
+  <p>Example combines operators (i.e. selector, selector {styling}). We want to test for parsing these strings.</p>
+  <ul>
+    <li class="dropdown">Hover over me to show sub list
+      <ul class="dropdown-content">
+        <li>List item 1</li>
+        <li>List item 2</li>
+      </ul>
+    </li>
+    <li class="dropdown2">Hover over me 2
+        <ul class="dropdown-content">
+          <li>List item 1</li>
+          <li>List item 2</li>
+        </ul>
+      </li>
+  </ul>
+
+</body>
+<!-- <script src="../pseudo_test.js"></script> -->
+
+</html>

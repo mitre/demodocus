@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+        <meta charset="UTF-8">
+        <title>Full Complex Form Example</title>
+        <link rel="stylesheet" type="text/css" href="../checkbox/hidden_input/hidden_style.css">
+</head>
+
+<h2>Full Complex Form</h2>
+<p>A simple example that complicates the form submission by integrating several different elements. </p>
+
+<form action="../multiple_forms/example.html" >
+    <p>Autocomplete some of Shakespeare's Plays</p>
+        <label>Autocomplete list for Shakespeare
+        <input list="plays" name="play" >
+        <datalist id="plays">
+          <option value="Romeo and Juliet">
+          <option value="Othello">
+          <option value="Macbeth">
+          <option value="Hamlet">
+          <option value="The Tempest">
+          <option value="A Midsummer's Night Dream">
+        </datalist>
+    </label>
+        <br>
+            <label>Check to Enable Input Fields
+            <input type="checkbox" onclick="checkEnabled()" id="mycheckbox" label="check_to_enable" />
+        </label>
+        <br>
+            First Name:
+            <input id="name1" name="name1" disabled="disabled"/>
+        <br>
+            Middle Name:
+            <input id="name2" name="name2" disabled="disabled"/>
+        <br>
+            Name:
+            <input id="name3" name="name3" disabled="disabled"/>
+        <br>
+
+        <ul style="list-style:none"> 
+                <li>
+                    Check to Show Input Fields
+                    <input type="checkbox" id="checkbox1" label="check_to_show"/> 
+                    <br /> <br />
+                    University:
+                    <input type="text">
+                    <br /> <br />
+                    City:
+                    <input type="text">
+                </li>
+        </ul>
+
+        <br>
+            This input is for favorite animal, has aria-label attribute and no label attribute
+        <br>
+            <input type="text" aria-label="animal_submission">
+        <br>
+            <label>This input is for favorite food, does not have aria-label attribute, but has a label attribute
+        <br>
+            <input type="text" label="favorite_food_submission">
+            </label>
+        <br>
+            <label>This input is for favorite season, has aria-label and label attribute
+        <br>
+            <input type="text" aria-label="favorite_season" label="favorite_season">
+        </label>
+        <br>
+        
+            <input type="submit" id ="submitbutton"> Submitting will redirect to a different form.
+
+
+
+
+
+    </form>
+
+
+    <div>
+            <button id="button2">Click Me, I add text to the screen</button>
+            <p id="populate2"></p> 
+    </div>
+<script>
+    let button2 = document.getElementById('button2');
+    let para2 = document.getElementById('populate2');
+    let myvar = true;
+    
+    button2.onclick = function(){
+        if(myvar) {
+            para2.innerHTML = "You have clicked button2";
+            myvar = false;
+        } else {
+            para2.innerHTML = "";
+            myvar = true;
+        }
+    }
+
+    function checkEnabled() {
+        var checkbox = document.getElementById('mycheckbox');
+        var input = document.getElementById('name1'); 
+        var input2 = document.getElementById('name2'); 
+        var input3 = document.getElementById('name3'); 
+        if(checkbox.checked){ 
+            input.disabled = false; 
+            input2.disabled = false;
+            input3.disabled = false;
+            input.focus();
+        }else{
+            input.disabled=true;
+            input2.disabled= true;
+            input3.disabled= true;
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>

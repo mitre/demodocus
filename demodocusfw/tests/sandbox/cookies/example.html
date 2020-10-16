@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Testing</title>
+    </head>
+    <body>
+        <h1 id="text">Testing</h1>
+    </body>
+    <script>
+        try {
+            // Need to add cookie
+            document.cookie = "I want a cookie";
+            document.querySelector("title").textContent = "success";
+        }
+        catch {
+            document.querySelector("title").textContent = "failed";
+        }
+
+    </script>
+
+</html>

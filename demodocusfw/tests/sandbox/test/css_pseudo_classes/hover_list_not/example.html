@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown:hover:not(#nodrop):not(.nodrop) .dropdown-content {
+      display:block;
+    }
+  </style>
+
+</head>
+
+<body>
+  <p>More complex example that tests using the :not operator in multiple ways </p>
+  <ul>
+    <li class="dropdown">Hover over me to show sub list
+      <ul class="dropdown-content">
+        <li>List item 1</li>
+        <li>List item 2</li>
+      </ul>
+    </li>
+    <li class="dropdown">Hover over me 2
+        <ul class="dropdown-content">
+          <li>List item 1</li>
+          <li>List item 2</li>
+        </ul>
+      </li>
+      <li id="nodrop" class="dropdown">Not to be hovered
+          <ul class="dropdown-content">
+              <li>List Item 1</li>
+              <li>List item 2</li>
+          </ul>
+      </li>
+      <li class="nodrop dropdown">Not to be hovered 2
+          <ul class="dropdown-content">
+              <li>List Item 1</li>
+              <li>List Item 2</li>
+          </ul>
+      </li>
+  </ul>
+
+</body>
+<!-- <script src="../pseudo_test.js"></script> -->
+
+</html>

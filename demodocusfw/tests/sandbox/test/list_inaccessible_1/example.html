@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expandable List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>Cake ingredients</p>
+<ul>
+    <li class="ingredient">
+        Eggs
+        <ul style="display: none;">
+            <li>Quantity: 4 large eggs</li>
+            <li>Type: From golden hens</li>
+        </ul>
+    </li>
+</ul>
+
+
+<style>
+    .ingredient {
+        cursor: pointer;
+    }
+
+    .ingredient > ul {
+        display: none;
+        cursor: text;
+    }
+</style>
+
+<script>
+    $(function(){
+        let ingredients = $('.ingredient');
+
+        ingredients.on('click', function(event){
+            $(event.target).children('ul').toggle();
+        })
+    })
+</script>
+</body>
+</html>

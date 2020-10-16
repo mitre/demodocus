@@ -1,0 +1,1 @@
+This example includes a button that when clicked eventually causes text to appear on the screen after a short delay.

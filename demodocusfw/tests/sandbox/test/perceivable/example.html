@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Button Test</title>
+</head>
+<body>
+    <div>
+        <button id="button1">Click Me</button>
+    </div>
+    <div>
+        <button id="button2">Click Me</button>
+    </div>
+    <div>
+        <button id="button3" >Click Me</button>
+    </div>
+    <div>
+        <button id="button4" >Click Me</button>
+    </div>
+    <div>
+        <button id="button5">Click Me</button>
+    </div>
+    <div>
+        <button id="button6">Click Me</button>
+    </div>
+   
+    <p id="result" aria-live="assertive"></p>
+</body>
+
+<style>
+#button1 {
+    font-size: 15pt; 
+    color: white; 
+    background-color: #B4BEFF;
+    height: 70px
+}
+#button2 {
+    font-size: 22pt; 
+    color: white; 
+    background-color: #B4BEFF;
+    height: 70px
+}
+#button3 {
+    font-size: 15pt; 
+    color: black; 
+    background-color: white;
+    height: 70px
+}
+#button4 {
+    font-size: 22pt; 
+    color: black; 
+    background-color: white;
+    height: 70px
+}
+#button5 {
+    width: 40px
+}
+#button6 {
+    font-size: 22pt;    
+    color: black; 
+    background-color: #B4BEFF;
+    border: none;
+}
+</style>
+
+<script>
+    let button1 = document.getElementById('button1');
+    let button2 = document.getElementById('button2');
+    let button3 = document.getElementById('button3');
+    let button4 = document.getElementById('button4');
+    let button5 = document.getElementById('button5');
+    let button6 = document.getElementById('button6');
+    
+    let result = document.getElementById('result');
+
+    function accessible_button(){
+        result.textContent = "You have clicked an accessible button."; 
+    }
+
+    function not_accessible_button(){
+        result.textContent = "You have clicked an inaccessible button."; 
+    }
+
+    button1.onclick = not_accessible_button;
+    button2.onclick = not_accessible_button;
+    button3.onclick = accessible_button;
+    button4.onclick = accessible_button;
+    button5.onclick = not_accessible_button;
+    button6.onclick = not_accessible_button;
+
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Pseudo Classes Test</title>
+    <link rel="stylesheet" type="text/css" href="pseudo_class_style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+</head>
+<p>A simple example using css pseudo classes where as text blocks are added, which texts are visible changes.</p>
+
+<body>
+    <button onclick="myfunction()">Click here to add buttons </button>
+    <div style="width:100%;" id="mytestdiv">
+
+        <p>This is text number 1</p>
+    </div>
+
+
+
+    <script>
+
+        var counter = 2;
+        function myfunction() {
+            if (counter < 3) {
+                var mynewbutton = document.createElement("p");
+                var mydiv = document.getElementById("mytestdiv");
+                mynewbutton.innerHTML = "This is text number " + String(counter);
+                mydiv.appendChild(mynewbutton);
+                counter = counter + 1;
+            }
+
+        };
+
+    </script>
+
+    <style>
+        #mytestdiv:hover {
+
+            display: none;
+        }
+    </style>
+
+</body>
+
+</html>

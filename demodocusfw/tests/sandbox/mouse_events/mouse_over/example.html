@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Over</title>
+    
+</head>
+<h2>A simple example with an event when the mouse is moved over the image. </h2>
+<body>
+    <label for="myImg">Mouse over the image in order to trigger an event</label>
+<img onmouseover="makeBig(this)" 
+    id="myImg" border="0" src="../myMSPaint.jpg" width="64" height="64">
+
+<p id="myHiddenText"></p>
+
+
+<script>
+function makeBig(x) {
+    x.style.height = "128px";
+    x.style.width = "128px";
+    var elem = document.getElementById("myHiddenText");
+    elem.innerHTML = "Hovering over an MS Paint drawing"
+}
+
+
+</script>
+
+</body>
+</html>

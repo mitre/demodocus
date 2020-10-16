@@ -1,0 +1,6 @@
+input[id="checkbox1"] ~ input {
+    display: none;
+}
+input[id="checkbox1"]:checked ~ input {
+    display: inline-block;
+}

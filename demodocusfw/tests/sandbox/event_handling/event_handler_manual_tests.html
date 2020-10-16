@@ -1,0 +1,235 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        /**
+         * This is a test page that we used to test out different event handling methods.
+         * Please see all of the examples at the bottom of the page that we are able to handle.
+         * 
+         * From this reasearch so far it seems the three main things that we need to deal with are:
+         * 1. addEventListener method is called. Ex. element.addEventListener("event", f());
+         * 2. Properties are set. Ex. element.onclick = f()
+         * 3. Element atttributes are used. Ex. <button onclick="f()"></button>
+         * 
+         * If any additional examples are found, please add them to the test cases below, and 
+         * potentially add a seperate test case that is used for demodocus unit tests
+         */
+
+        // Code below from demodocusfw/web/dom_manipulations.py
+
+        function getXpath(el) {
+            // Gets the xpath for an element.
+            var result = "";
+            while (el.parentNode !== undefined && el.parentNode !== null) {
+                var i = 1;
+                var el_index = 0;
+                siblings = el.parentNode.childNodes
+                for (c in siblings) {
+                    if (siblings[c] == el) {
+                        el_index = i;
+                    }
+                    else if (siblings[c].tagName == el.tagName)
+                        i += 1;
+                }
+                if (i > 1)
+                    result = "/" + el.tagName + "[" + el_index + "]" + result;
+                else
+                    result = "/" + el.tagName + result;
+                el = el.parentNode;
+            }
+            return result.toLowerCase();
+        }
+
+        var demod_eventTypes = ["click", "mousedown", "mouseup", "mouseover", "mouseout", "keydown", "keyup", "keypress", "focus", "blur",
+            "mouseenter", "mouseleave"];
+
+
+        function demod_addEventListener(el, type) {
+            //This function is called when an event listener should be added to el.
+            if (demod_eventTypes.includes(type)) {
+                try {
+                    // Some elements have not finished loading and so won't have xpaths.
+                    elDesc = getXpath(el);
+                    if (elDesc == "") {
+                        elDesc = el.tagName;
+                    }
+                    console.debug("Adding " + type + " to " + elDesc);
+                    typeName = "demod_" + type;
+                    if (!(typeName in el)) {
+                        el[typeName] = 0;
+                        el.setAttribute(typeName, "" + el[typeName]);
+                    }
+                    el[typeName] += 1;
+                    el.setAttribute(typeName, "" + el[typeName]);
+                }
+                catch (e) {
+                    // Something you can't add attributes to... either Window or document.
+                    console.log("Unable to add attribute.");
+                }
+            }
+        }
+
+        // I believe it turns out that this jquery code is unnecessary as it is caught by the 
+        // prototype wrappers below.
+
+        // if (window.jQuery !== undefined) {
+        //     console.log("Registering for jquery");
+
+        //     (function ($) {
+        //         var oldOn = $.fn.on;
+        //         $.fn.on = function(event, handler) {
+
+        //             // We may have elements in a single .on statement
+        //             // E.g. (.somclass).on({}); if the class has >1 member
+        //             let arr = [...this];
+        //             arr.forEach((element) => {
+        //                 // Check if event is an object, usually of the form {mouseenter: f(), mouseleave: f()}
+        //                 // This happens on jquery chaining like: $().on({mouseenter: f(), mouseleave()})
+        //                 if (event instanceof Object)
+        //                 {
+        //                     Object.keys(event).forEach((event) =>
+        //                     {
+        //                         demod_addEventListener(element, event);
+        //                         // return oldOn.apply(this, arguments);
+        //                     });
+        //                 }
+        //                 else // Assume it is a string. Is there anything else it could be?
+        //                 {
+        //                     // Need this[0] since jquery gives element arrays
+        //                     demod_addEventListener(element, event);
+        //                 }
+        //             });
+
+        //             return oldOn.apply(this, arguments);
+
+        //         };
+        //     })(jQuery);
+        // }
+
+        var origLisAdd = EventTarget.prototype.addEventListener;
+        var origLisRemove = EventTarget.prototype.removeEventListener;
+        EventTarget.prototype.addEventListener = function (type, handler, useCapture) {
+            demod_addEventListener(this, type);
+            return origLisAdd.apply(this, arguments);
+        }
+
+        // EventTarget.prototype.removeEventListener = function(type, handler, useCapture) {
+        //     demod_removeEventListener(this, type);
+        //     return origLisRemove.apply(this, arguments);
+        // }
+
+        for (i in demod_eventTypes) {
+            et = demod_eventTypes[i];
+            let desc = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "on" + et);
+            HTMLElement.prototype.__defineSetter__("on" + et, function (p_et, originalSet) {
+                return function (f) {
+                    if (f == null) {
+                        demod_removeEventListener(this, p_et);
+                    }
+                    else {
+                        demod_addEventListener(this, p_et);
+                    }
+                    console.debug('setting ' + getXpath(this) + ':' + p_et + ' to ' + f);
+                    return originalSet.apply(this, arguments);
+                };
+            }(et, desc.set));
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <!-- <button id="button" class="button" onclick="message()">Hello</button>-->
+    <button id="button" class="button">Hello</button>
+    <button id="button2" class="button">Next button</button>
+</body>
+
+<script>
+    function message()
+    {
+        console.log("clicking");
+    }
+
+    // Below are several possible cases that we need to be able to handle
+
+    //
+    // JQUERY Event attachments
+    //
+
+    // $("#button").click(() => {console.log("Clicking")});
+    // $("#button").on("click", () => console.log("click"));
+
+    // $("#button").hover(
+    //     function() {
+    //         console.log("Test: hover in");
+    //     },
+    //     function() {
+    //         console.log("Test: hover out");
+    //     }
+    // )
+
+    // $("#button").on({
+    //     mouseenter: () => {console.log("Mouse enter")},
+    //     mouseleave: () => {console.log("Mouse leave")},
+    // });
+
+    // $(".button").on("click", () => {console.log("Clicked")});
+
+    // $(".button").on({
+    //     mouseenter: () => {console.log("Mouse enter")},
+    //     mouseleave: () => {console.log("Mouse leave")},
+    // });
+
+    // $(".button").hover(
+    //     function() {
+    //         console.log("Test: hover in");
+    //     },
+    //     function() {
+    //         console.log("Test: hover out");
+    //     }
+    // )
+
+    let button = document.querySelector("#button");
+
+    //
+    // Property event handlers
+    //
+
+
+    // button.onclick = () => {console.log("Clicking onclick")};
+    // button.onmouseover = (event) => {console.log("Mousing over")};
+
+    //
+    // Add event listeners
+    //
+
+    // button.addEventListener("click", () => { console.log("Clicked") })
+    // button.addEventListener("mouseover", () => {console.log("Mouseover")});
+
+
+</script>
+
+<script>
+    // Needs to be run after elements are added
+    // Does this break if no elements match the xpath?
+    function demod_collectEventAttributes() {
+        // Get all items with an event attribute.
+        // Which is faster, one xpath query or several?
+        // Use the following line to get all elements with event listeners at once.
+        //xpath = "//*[@" + demod_eventTypes.join(" or @") + "]";
+        // For each event type, get all the elements that have that event type.
+        for (let eventType of demod_eventTypes) {
+            let xpath = "//*[@on" + eventType + "]";
+            let res = document.evaluate(xpath, document.body, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+            for (let nodeIndex = 0; nodeIndex < res.snapshotLength; nodeIndex++) {
+                demod_addEventListener(res.snapshotItem(nodeIndex), eventType);
+            }
+        }
+    }
+    demod_collectEventAttributes();
+</script>
+
+</html>

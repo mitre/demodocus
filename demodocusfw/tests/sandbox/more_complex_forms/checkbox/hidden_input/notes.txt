@@ -1,0 +1,1 @@
+A simple example where the input fields will not show up through css style until the checkbox is filled.

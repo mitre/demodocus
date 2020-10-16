@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<fieldset>
+    <legend>Favorite Colors</legend>
+    <label>
+        <input type="radio" name="colors" value="red">
+        Red
+    </label>
+    <label>
+        <input type="radio" name="colors" value="green">
+        Green
+    </label>
+    <label>
+        <input type="radio" name="colors" value="rainbow" aria-disabled="true">
+        Rainbow
+    </label>
+</fieldset>
+<button type="submit" id="submit">Submit</button>
+<span id="notify"></span>
+<script>
+    let button = document.querySelector("#submit");
+    let notify = document.querySelector("#notify");
+    let radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    button.onclick = function(){
+        if(radioButtonSelected()){
+            notify.innerHTML = "You have successfully submitted your form.";
+        }
+        else{
+            notify.innerHTML = "Error, you must select one.";
+        }
+    };
+
+    function radioButtonSelected() {
+        for(i = 0; i < radioButtons.length; i++){
+            if(radioButtons[i].checked)
+                return true;
+        }
+    }
+</script>
+
+</body>
+</html>

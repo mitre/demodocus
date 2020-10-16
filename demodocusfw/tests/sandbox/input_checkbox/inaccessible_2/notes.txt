@@ -1,0 +1,1 @@
+Only briefly shows the success state before reloading the page.

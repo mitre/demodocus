@@ -1,0 +1,2 @@
+Simple example with several different buttons with various color contrast scenarios
+along with various text sizes. 

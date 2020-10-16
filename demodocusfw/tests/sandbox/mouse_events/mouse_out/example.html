@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Out</title>
+    
+</head>
+<h2>A simple example with an event when the mouse is moved off of the image. </h2>
+<body>
+<label for="myMSPaint">Mouse off of the image in order to trigger the event</label>
+<img onmouseout="makeNormal(this)" id="myMSPaint"
+    border="0" src="../myMSPaint.jpg" width="64" height="64">
+
+<p id="myHiddenText"></p>
+
+
+<script>
+
+
+function makeNormal(x) {
+    x.style.height = "128px";
+    x.style.width = "128px";
+    var elem = document.getElementById("myHiddenText");
+    elem.innerHTML = "Just performed a mouseout on the image";
+}
+</script>
+
+</body>
+</html>

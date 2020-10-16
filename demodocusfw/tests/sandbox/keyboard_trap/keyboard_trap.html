@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Static List</title>
+</head>
+<body>
+<p>Cake ingredients</p>
+<ul>
+    <li class="ingredient" tabindex="0">
+        Eggs
+        <ul>
+            <li>Quantity: 4 large eggs</li>
+            <li>Type: From golden hens</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0"  id="item2">
+        Flour
+        <ul>
+            <li>Quantity: 3 Cups</li>
+            <li>Type: All-purpose</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Baking Powder
+        <ul>
+            <li>Quantity: 2 teaspoons</li>
+            <li>Type: Powdery</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0"  id="item4">
+        Sugar
+        <ul>
+            <li>Quantity: 2 cups</li>
+            <li>Type: White</li>
+        </ul>
+    </li>
+</ul>
+</body>
+
+<script>
+  let item2 = document.querySelector("#item2");
+  let item4 = document.querySelector("#item4");
+
+  item4.onkeydown = (event) => {
+    if (event.key == "Tab") {
+      item2.focus();
+      event.preventDefault();
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<body>  
+    <p> A simple example where a checkbox is required to be marked before the form is enabled.</p> 
+        <form>
+            <p>Check to enable fields</p>
+            <label>Check to enable fields
+            <input type="checkbox" onclick="checkEnabled()" id="mycheckbox" />
+         </label>
+        <br>
+            <label>First Name:
+            <input id="name1" name="name1" disabled="disabled"/>
+            </label> 
+        <br>
+            <label>Middle Name:
+            <input id="name2" name="name2" disabled="disabled"/>
+        </label>
+        <br>
+            <label>Last Name:
+            <input id="name3" name="name3" disabled="disabled"/>
+            </label>
+        <br>
+            <label>Submit here
+            <input type="submit" value="Submit">
+        </label>
+        </form>
+
+        
+<script>
+    function checkEnabled() {
+        var checkbox = document.getElementById('mycheckbox');
+        var input = document.getElementById('name1'); 
+        var input2 = document.getElementById('name2'); 
+        var input3 = document.getElementById('name3'); 
+        if(checkbox.checked){ 
+            input.disabled = false; 
+            input2.disabled = false;
+            input3.disabled = false;
+            input.focus();
+        }else{
+            input.disabled=true;
+            input2.disabled= true;
+            input3.disabled= true;
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

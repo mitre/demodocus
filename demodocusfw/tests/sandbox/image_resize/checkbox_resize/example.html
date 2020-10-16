@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<body>  
+    <p> A simple example where a checkbox controls the size of the image.</p> 
+        
+            <label>Check to resize image
+            <input type="checkbox" onclick="checkEnabled()" id="mycheckbox" />
+            </label>
+
+            <label for="myImg">Mouse on and off the image in order to trigger events</label>
+            <img onmouseover="makeBig(this)" onmouseout="makeNormal(this)" 
+                id="myImg" border="0" src="../../mouse_events/myMSPaint.jpg" width="64" height="64">
+
+        
+<script>
+    function checkEnabled() {
+        var checkbox = document.getElementById('mycheckbox');
+        var img = document.getElementById('myImg');
+        if(checkbox.checked){ 
+           
+            img.style.width = '128px';
+            img.style.height = '128px';
+            
+        }else{
+            img.style.width = '64px';
+            img.style.height = '64px';
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <label>First Name:</label>
+        <input id="input" type="text">
+    </body>
+    <script>
+        // From additive 1
+        let input = document.getElementById("input");
+        input.setAttribute('aria-label', 'name');
+
+        // From additive 2
+        let scriptTag = document.createElement('SCRIPT');
+        scriptTag.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js');
+
+        let head = document.querySelector('head');
+        head.appendChild(scriptTag);
+
+        // From additive 3
+        let body = document.querySelector('body');
+
+        let newLabel = document.createElement('LABEL');
+        newLabel.textContent = "Last Name:"
+        newLabel.setAttribute('for', 'lastName');
+
+        let newInput = document.createElement('INPUT');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('id', 'lastName');
+
+        body.appendChild(newLabel);
+        body.appendChild(newInput);
+    </script>
+</html>

@@ -1,0 +1,1 @@
+Form now uses function to check success and failure.

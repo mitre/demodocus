@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accessible List</title>
+</head>
+<body>
+<p>Cake ingredients</p>
+<ul>
+    <li class="ingredient" tabindex="0">Eggs</li>
+    <li class="ingredient" tabindex="0">Flour</li>
+    <li class="ingredient" tabindex="0">Milk</li>
+    <li class="ingredient" tabindex="0">Icing</li>
+</ul>
+
+<style>
+    .ingredient:focus {
+        border-right: 1px solid yellow;
+        border-top: 2px solid red;
+        border-bottom: 2px solid green;
+        border-left: 1px solid blue;
+    }
+    
+    *:focus {
+        outline: none;
+    }
+</style>
+
+</body>
+</html>

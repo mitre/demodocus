@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en"><script demodocus_ignore="true">demodocus_done=false;history.replaceState(null, '', 'http://127.0.0.1:8080/list/partaccessible_1/example.html');</script><head><script demodocus_ignore="true">
+function getXpath(el) {
+    // Gets the xpath for an element.
+    var result = "";
+    while (el.parentNode !== undefined && el.parentNode !== null) {
+        var i = 1;
+        var el_index = 0;
+        siblings = el.parentNode.childNodes
+        for (c in siblings) {
+            if (siblings[c] == el) {
+                el_index = i;
+            }   
+            else if (siblings[c].tagName == el.tagName)
+                i += 1;
+        }
+        if (i > 1)
+            result = "/" + el.tagName + "[" + el_index + "]" + result;
+        else
+            result = "/" + el.tagName + result;
+        el = el.parentNode;
+    }
+    return result.toLowerCase();
+}
+loc = window.location.toString().toLowerCase();
+locUrl = new URL(loc);
+// This JavaScript code listens for whenever an event listener is added to any element.
+//  It adds the element and event listener to the demod_eventListeners dictionary.
+// Here are the events we want to track.
+const demod_eventTypes = ["click", "mousedown", "mouseup", "mouseover", "mouseout", "keydown", "keyup", "keypress", "focus", "blur", 
+    "mouseenter", "mouseleave"];
+document.documentElement.setAttribute("demod_events", "true");
+function demod_addEventListener(el, type) {
+    //This function is called when an event listener should be added to el.
+    if (demod_eventTypes.includes(type)) {
+        try {
+            // Some elements have not finished loading and so won't have xpaths.
+            elDesc = getXpath(el);
+            if (elDesc == "") {
+                elDesc = el.tagName;
+            }
+            console.debug("Adding " + type + " to " + elDesc);
+            typeName = "demod_" + type;
+            if (!(typeName in el)) {
+                el[typeName] = 0;
+                el.setAttribute(typeName, "" + el[typeName]);
+            }
+            el[typeName] += 1;
+            el.setAttribute(typeName, "" + el[typeName]);
+        }
+        catch(e) {
+            // Something you can't add attributes to... either Window or document.
+        }
+    }
+}
+function demod_removeEventListener(el, type) {
+    //This function is called when an event listener should be removed from el.
+    typeName = "demod_" + type;
+    if (typeName in el) {
+        el[typeName] -= 1;
+        if (el[typeName] == 0) {
+            try {
+                el.removeAttribute(typeName);
+                delete el[typeName];
+            }
+            catch(e) {
+                // Something you can't add attributes to... either Window or document.
+            }
+        }
+    }
+}
+/*
+// TODO: Use this code block for asynchronously added nodes.
+var observer = new MutationObserver(function(mutations) {
+ mutations.forEach(function(mutation) {
+   for (var i = 0; i < mutation.addedNodes.length; i++)
+     node = mutation.addedNodes[i];
+     console.debug(getXpath(node) + " added to page.");
+ })
+});
+observer.observe(document.body, { childList: true });
+*/
+// Setting up for event tracking...
+// Different ways an event handler can be added.
+// 1) .addEventListener, and .removeEventListener
+var origLisAdd = EventTarget.prototype.addEventListener;
+var origLisRemove = EventTarget.prototype.removeEventListener;
+EventTarget.prototype.addEventListener = function(type, handler, useCapture) {
+    demod_addEventListener(this, type);
+    return origLisAdd.apply(this, arguments);
+}
+EventTarget.prototype.removeEventListener = function(type, handler, useCapture) {
+    demod_removeEventListener(this, type);
+    return origLisRemove.apply(this, arguments);
+}
+// 2) el.onclick = X
+for (i in demod_eventTypes) {
+    let et = demod_eventTypes[i];
+    let desc = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "on" + et);
+    // WARNING: This approach has been deprecated, may need revisiting
+    // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/__defineSetter__
+    HTMLElement.prototype.__defineSetter__("on" + et, function(p_et, originalSet) {
+        return function(f) {
+            if (f == null) {
+                demod_removeEventListener(this, p_et);
+            }
+            else {
+                demod_addEventListener(this, p_et);
+            }
+            console.debug('setting ' + getXpath(this) + ':' + p_et + ' to ' + f);
+            return originalSet.apply(this, arguments);
+        };
+    }(et, desc.set));
+}
+// TODO: Figure out how to override other sorts of event listeners.
+// Maybe look at each element as it loads?
+</script>
+    <meta charset="utf-8"/>
+    <title>Accessible List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>Cake ingredients</p>
+<ul>
+    <li class="ingredient" tabindex="0">
+        Eggs
+        <ul style="display: none;">
+            <li>Quantity: 4 large eggs</li>
+            <li>Type: From golden hens</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Flour
+        <ul style="display: none;">
+            <li>Quantity: 3 Cups</li>
+            <li>Type: All-purpose</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Baking Powder
+        <ul style="display: none;">
+            <li>Quantity: 2 teaspoons</li>
+            <li>Type: Powdery</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Sugar
+        <ul style="display: none;">
+            <li>Quantity: 2 cups</li>
+            <li>Type: White</li>
+        </ul>
+    </li>
+</ul>
+<style>
+    body {
+        font-size: 50px;
+    }
+    .ingredient {
+        cursor: pointer;
+    }
+    .ingredient > ul {
+        display: none;
+        cursor: text;
+    }
+</style>
+<script>
+    $(function(){
+        let ingredients = $('.ingredient');
+        $(ingredients[0]).on('click keyup', toggleChildren);
+        $(ingredients[1]).on('click keyup', toggleChildren);
+        $(ingredients[2]).on('click keyup', toggleChildren);
+        $(ingredients[3]).on('click', toggleChildren);
+        function toggleChildren(event){
+            console.log(event);
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' '))
+            {
+                $(event.target).children('ul').toggle();
+            }
+        }
+    });
+</script>
+</body><script demodocus_ignore="true">
+// 4) the <button onclick=js()/> attribute
+// When the whole page is loaded, go back and look at attributes. (Can't figure out how else to do this yet.)
+function demod_collectEventAttributes() {
+    // Get all items with an event attribute.
+    // Which is faster, one xpath query or several?
+    // Use the following line to get all elements with event listeners at once.
+    //xpath = "//*[@" + demod_eventTypes.join(" or @") + "]";
+    // For each event type, get all the elements that have that event type.
+    for (let eventType of demod_eventTypes) {
+        let xpath = "//*[@on" + eventType + "]";
+        let res = document.evaluate(xpath, document.body, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+        for (let nodeIndex = 0; nodeIndex < res.snapshotLength; nodeIndex++) {
+            demod_addEventListener(res.snapshotItem(nodeIndex), eventType);
+        }
+    }
+}
+demod_collectEventAttributes();
+/**
+* This turns out to be much trickier than one would expect due to the
+* various ways that css selectors can be built. We have some implementation below
+* but will be building up the robustness of this function for some time to come.
+*
+* @returns An object:
+* {
+*  "activator": // CSS selector for element that is activated by :psuedo
+*   "applied": // CSS selector for elements the styles are applied to
+* }
+*/
+function demod_parseSelectors(cssRule, pseudoClass) {
+    // Find the full activator selector text
+    pseudoClass = ':' + pseudoClass;
+    let splitSelectors = cssRule.selectorText.split(',');
+    let selectors = []
+    for (let selector of splitSelectors) {
+        let pseudoIndex = selector.indexOf(pseudoClass);
+        // Not all selectors within a rule may have the pseudo class
+        if (pseudoIndex === -1) {
+            continue;
+        }
+        // Check for rules that use :hover as a selector
+        // E.g. selector:not(:hover), selector > :hover
+        else if(selector[pseudoIndex - 1] == '(' || selector[pseudoIndex - 1] == ' ' || selector[pseudoIndex - 1] == '>')
+        {
+            continue;
+        }
+        // Now we know that hover is being used and not as a selector. We need
+        // to find the components of the css: activator and applied.
+        //
+        // The activator elements are ones that the pseudo actions triggers on,
+        // and the applied elements are the ones whose styling changes as a result
+        // of the trigger.
+        //
+        // Examples:
+        // 1. .hover:hover a
+        //     Activator: .hover, Applied: a
+        // 2. body > div[attr="xyz"] > p.hover:hover:not(.class) a
+        //     Activator: body > div[attr="xyz"] > p.hover
+        //     Applied: :not(.class) a
+        let remainingSelector = selector.substr(pseudoIndex);
+        // We consider the activator selector to be found when we find a space ' '
+        // and the parenthesis count is 0. An example for why is below
+        // e.g., .hover:hover:not(.someclass > a) p
+        let selectorEndIndex = pseudoIndex; // Starting where the pseudo class is
+        let parenCount = 0;
+        for (let c of remainingSelector) {
+            if (c === '(') {
+                parenCount++;
+            }
+            else if (c === ')') {
+                parenCount--;
+            }
+            else if (parenCount === 0 && c === ' ') {
+                break;
+            }
+            selectorEndIndex++;
+        }
+        // E.g., Input: .classname:pseudo:not(#id) p > .classname:not(#id)
+        let splitActivator = selector.substr(0, selectorEndIndex).split(pseudoClass);
+        let activatorText = splitActivator[0] + splitActivator[1];
+        // Applied text is the selector of the elements after :pseudo
+        let appliedText = selector.substr(selectorEndIndex);
+        selectors.push({
+            'activatorText': activatorText,
+            'appliedText': appliedText,
+        });
+    }
+    // Query selector for all of the elements
+    return selectors;
+}
+// Gets the styling from the rule
+// Currently assumes all rules are formatted in the pattern of:
+// selector text { rule styles }
+// We only want the rule styles
+function demod_getStyleFromRule(cssRule) {
+    // Simplest implementation
+    let start = cssRule.cssText.indexOf('{');
+    let end = cssRule.cssText.lastIndexOf('}');
+    let style = cssRule.cssText.substr(start + 1, end - start - 1);
+    return style
+}
+// Returns all elements that have css rules attached to them with the given pseudoclass.
+function demod_findPseudoRules(pseudoClass) {
+    const stylesToCheck = ["display", "opacity", "background", "transform", "width", "height"];
+    let pseudoRules = [];
+    for (let sheet of document.styleSheets) {
+        // In some cases, getting rules seems to be protected. Is there a way to determine
+        // this ahead of time instead of just looking for an error?
+        let rules = null;
+        try {
+            rules = [...sheet.rules];
+        }
+        catch (error) {
+            console.warn("Unable to get styleSheet rules:", error);
+            continue;
+        }
+        for (let index = 0; index < rules.length; index++) {
+            let rule = rules[index];
+            // For media rules that use @media, we will append the sub-rules for consideration.
+            if (rule instanceof CSSMediaRule) {
+                // Add the rules underneath this condition for consideration
+                rules = rules.concat([...rule.cssRules]);
+                continue; // The sub-rules have been added for later consideration, do not consider this rule.
+            }
+            else if (rule instanceof CSSImportRule) {
+                // For imported stylesheets, we will append the sub-rules for consideration.
+                try {
+                    // Some import rules won't allow to access the css rules and throw an error
+                    rules = rules.concat([...rule.styleSheet.cssRules]);
+                }
+                catch(error) {
+                    console.warn("Unable to get import rule styles:", error);
+                }
+                continue; // The sub-rules have been added for later consideration, do not consider this rule.
+            }
+// See if this rule refers to the specified pseudoclass.
+            if ("selectorText" in rule && rule.selectorText.indexOf(':' + pseudoClass) >= 0) {
+                let containsStyle = false;
+                for (let style of stylesToCheck) {
+                    if (rule.style[style] != "") {
+                        containsStyle = true;
+                        break;
+                    }
+                }
+                if (containsStyle) {
+                    pseudoRules.push(rule);
+                }
+            }
+        };
+    };
+    return pseudoRules;
+}
+function demod_getPseudoRulesInfo(pseudoClass) {
+    let pseudoRulesInfo = []
+    let rules = demod_findPseudoRules(pseudoClass);
+    for (let rule of rules) {
+        let pseudoRule = {
+            'rule': rule,
+            'style': demod_getStyleFromRule(rule), // Some css style e.g., color: red
+            'selectors': demod_parseSelectors(rule, pseudoClass) // An array of selectors using :hover
+        };
+        // If no selectors in the rule used :hover correctly don't add the rule
+        if (pseudoRule.selectors.length > 0) {
+            pseudoRulesInfo.push(pseudoRule);
+        }
+    }
+    return pseudoRulesInfo;
+}
+let pseudoRulesInfo = demod_getPseudoRulesInfo('hover');
+let head = document.getElementsByTagName('head')[0];
+let demod_style = document.createElement('style');
+demod_style.type = 'text/css';
+head.append(demod_style);
+// Now that we've found all the :hover rules, we need to make them trigger-able on mouseover and mouseout.
+// (Simply dispatching JavaScript events does not trigger them.)
+// To accomplish this, we add a number of "demodocus-n" css classes to the page, where n is an integer that goes from 0 to number of classes we need.
+// Then we add event listeners to the elements to add and remove these classes on mouseover and mouseout.
+let globalCounter = 0;
+for (let rule of pseudoRulesInfo) {
+    console.log("Adding rule", rule);
+    // The local counter will lose reference each loop, but
+    // be maintained in the event handlers for use in finding the correct
+    // class for styling
+    let localCounter = globalCounter;
+    demod_style.sheet.addRule('.demodocus-' + localCounter, rule.style);
+    for (let selector of rule.selectors) {
+        // We always must have activator elements
+        let activatorEl = null;
+        try {
+            activatorEl = [...document.querySelectorAll(selector.activatorText)];
+        }
+        catch(error) {
+            console.warn("Error finding activator elements:", error);
+            continue;
+        }
+        for (let act of activatorEl) {
+            let appliedEl = null;
+            // Used to create the unique selector below. We like to use the parent of act
+            // to run the query selector since we have to do less work ourselves. However, we
+            // need to ensure that the parent doesn't have two children that fit the same selector
+            // We add 'demod_active' to make sure the only element referenced by the query's selector is this one.
+            act.setAttribute('demod_active', 'true');
+            let css_selector = selector.activatorText + '[demod_active="true"] ' + selector.appliedText;
+            // Find elements that the styling should be applied to
+            try {
+                appliedEl = [...act.parentNode.querySelectorAll(css_selector)];
+            }
+            catch (error) {
+                console.warn("Unable to find applied elements", error);
+                continue;
+            }
+            act.removeAttribute('demod_active');
+            // Add mouse over and mouseout listeners that add class that points to rule style
+            // this effectively simulates hover
+            act.addEventListener('mouseover', () => {
+                for (app of appliedEl) {
+                    app.classList.add("demodocus-" + localCounter);
+                }
+            });
+            act.addEventListener('mouseout', () => {
+                for (app of appliedEl) {
+                    app.classList.remove("demodocus-" + localCounter);
+                }
+            });
+        }
+    }
+    globalCounter++;
+}
+</script><script demodocus_ignore="true">demodocus_done=true;</script></html>
