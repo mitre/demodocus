@@ -1,4 +1,4 @@
-# Demodocus
+# [Demodocus](https://mitre.github.io/demodocus/)
 
 This framework is intended to extend the capabilities of current automated accessibility testing tools into the realm of dynamic web content. 
 
@@ -23,17 +23,17 @@ When Demodocus first arrives at a site, it will first find all elements that it 
 
 In the graph, you can see the initial state leads to several other states through various edges. In this case, the states are specific instances of content and functionality of the web page and the edges are the interactions between them. Referring back to the dropdown navbar, a closed and an open navbar would be seperate states and the event to open the navbar would be the edge between them. 
 
-We now run a modelled user with a disability over the web page to determine what content it has access to. For example, we might model a user that can only use the keyboard and find that for the same site as above and find that the user cannot traverse the edges with the `onMouseOver` events. Whe comparing to the `omni-graph` we see that this looks like 
+We now run a modelled user with a disability over the web page to determine what content it has access to. For example, we might model a user that can only use the keyboard and find that for the same site as above and find that the user cannot traverse the edges with the `onMouseOver` events. Whe comparing to the `omni-graph` we see that this looks like the image below, where the blue states with a solid board a reachable for a keyboard user and the red states with a dotted border are inaccessible to the user. 
 
 <img src="./docs/images/keyboard-graph.png" width="400" height="250" alt="Keyboard vs Omni Graph">
 
-At this point, we can say that states 3, 5, and 6 are unreachable, and we can point the the `onMouseover` as the reason. Finally, this can be reported back to developers or accessibility experts for further remediation. 
+At this point, we can say that states 3, 5, and 6 are unreachable, and we can point the the `onMouseover` from states 3 and 5 as the reason. Finally, this can be reported back to developers or accessibility experts for further remediation. 
 
 There is a lot of complexity under the hood for implementing this algorithm in the world of web applications along with other checks and features that have been added, but at its core this is still the goal we are trying to achieve. 
 
 ## Documentation
 
-Below are some short details on how to get setup and running if you want to test quickly. If you would like more detailed information, please see the [Full Documentation](./docs/index.md).
+Below are some short details on how to get setup and running if you want to test quickly. If you would like more detailed information, please see the [Full Documentation](https://mitre.github.io/demodocus/).
 
 ## Setup
 

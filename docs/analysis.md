@@ -11,7 +11,7 @@ metrics and optimal paths. A report is printed to the output directory called
 `analysis_report.md`. An analyzed `.gml` file is also outputted, which can be
 read into the graph application for visualization.
 
-## Implementing a new `Analyzer`
+## Implementing a new Analyzer
 
 The *accessibility* context required more analysis than what is generic to all
 applications, and is a good example on how to implement other `Analyzer`s. See

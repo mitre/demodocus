@@ -9,6 +9,7 @@ research project to automate accessibility testing of dynamic web pages.
 * [Overview](overview.md)
 * Install and Configure Demodocus
     * [Setup](setup.md)
+    * [End to End Example](end_to_end.md)
     * [Configuration](configuration.md)
     * [Running crawls](running-crawls.md)
 * Architecture
