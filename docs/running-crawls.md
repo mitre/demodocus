@@ -3,7 +3,7 @@
 ## Command-line options
 
 To start the crawler from the command line, serve up your copy of the sandbox
-(see [README.md](../README.md)), and note the port in case you need to change
+(see [README.md](https://github.com/mitre/demodocus/blob/main/README.md)), and note the port in case you need to change
 it), then give `crawler.py` a URL, command, or other "entry point" specific to
 your [type of interface](interfaces.md) to start crawling:
 
@@ -87,22 +87,22 @@ Specifying `REDUCED_CRAWL = True` in the config addresses this challenge. In a
 reduced crawl, when the crawler explores a state, it *only explores content that
 it knows has changed from the previous state*.
 
-For an example of what is saved / lost in a reduced crawl, consider the example
-[list/partaccessible_2](../demodocusfw/tests/sandbox/list/partaccessible_2).
-In a reduced crawl, the crawler expands and then collapses each list item in
-turn, but it does not try to expand multiple list items at once. The reduced
-graph and full graph are shown below.
+For an example of what is saved / lost in a reduced crawl, consider an example with
+4 independently expandable list items. In a reduced crawl, the crawler expands and 
+then collapses each list item in turn, but it does not try to expand multiple list 
+items at once. This reduces combinatorial explosion of considering all permutations
+of the list items being expanded as seperate states. The reduced graph and full graph are shown below.
 
 * In the reduced graph, we see that the KeyboardUser can toggle each item in the
   list but cannot access the "show all" button.
 * A full crawl would show that the KeyboardUser can get to the "show all" state
   by expanding every item.
 
-Reduced graph:
-![image](images/reduced-graph.png)
+### Reduced graph:
+![Reduced Graph](images/reduced-graph.png)
 
-Full graph:
-![image](images/full-graph.png)
+### Full graph:
+![Full Graph](images/full-graph.png)
 
 ## Analyzing Accessibility
 

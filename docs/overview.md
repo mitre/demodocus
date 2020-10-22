@@ -54,7 +54,7 @@ See [Setup](setup.md) for information on how to get started.
 
 ## Usage
 
-See the [End-to-End example](../README.md) for an intended usage of `demodocus`.
+See the [End-to-End example](end_to_end.md) for an intended usage of `demodocus`.
 
 ## Architecture
 
