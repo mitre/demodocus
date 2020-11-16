@@ -1,0 +1,35 @@
+language: python
+python:
+  - "3.7"
+  - "3.8"
+  - "3.8-dev"
+
+addons:
+  chrome: stable
+  apt:
+    packages:
+      chromium-chromedriver
+
+# Note: no need to specify virtualenv, see:
+# https://docs.travis-ci.com/user/languages/python/#travis-ci-uses-isolated-virtualenvs
+install:
+  - pip install -r requirements.txt
+
+# build pages
+
+script:
+  - pylint demodocusfw/ --rcfile .pylintrc --exit-zero
+  - python -m unittest demodocusfw/tests/dom_manipulations.py
+  - python -m unittest demodocusfw/tests/test_template.py
+  - python -m unittest demodocusfw/tests/compare.py
+  - python -m unittest demodocusfw/tests/reachable.py
+  - python -m unittest demodocusfw/tests/selenium_integration.py
+  - python -m unittest demodocusfw/tests/test_web_access_chrome.py
+  - python -m unittest demodocusfw/tests/event_tracking.py
+  - python -m unittest demodocusfw/tests/animation.py
+  - DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/test_crawler.py
+  - python -m unittest demodocusfw/tests/keyboard_crawl.py
+  - DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/crawl_graph.py
+  - python -m unittest demodocusfw/tests/reduced_crawl.py
+  - DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/test_analysis.py
+  - python -m unittest demodocusfw/tests/keyboard_eval.py
