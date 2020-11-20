@@ -44,7 +44,7 @@ See the [setup](./docs/setup.md) page for full details and options to install `d
 % chromedriver -v # Outputs chromedriver version
 ```
 2. (Recommended) Setup a python virtual environment using your favorite env manager.
-3. Install dependencies
+3. Install dependencies. **NOTE**: We currently require python 3.7 or 3.8.
 ```bash
 % pip install -r requirements.txt
 ```
