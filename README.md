@@ -23,7 +23,7 @@ When Demodocus first arrives at a site, it will first find all elements that it 
 
 In the graph, you can see the initial state leads to several other states through various edges. In this case, the states are specific instances of content and functionality of the web page and the edges are the interactions between them. Referring back to the dropdown navbar, a closed and an open navbar would be seperate states and the event to open the navbar would be the edge between them. 
 
-We now run a modelled user with a disability over the web page to determine what content it has access to. For example, we might model a user that can only use the keyboard and find that for the same site as above and find that the user cannot traverse the edges with the `onMouseOver` events. When comparing to the `omni-graph` we see that this looks like the image below, where the blue states with a solid board a reachable for a keyboard user and the red states with a dotted border are inaccessible to the user. 
+We now run a modelled user with a disability over the web page to determine what content it has access to. For example, we might model a user that can only use the keyboard and find that for the same site as above that the user cannot traverse the edges with the `onMouseOver` events. When comparing to the `omni-graph` we see that this looks like the image below, where the blue states with a solid border are reachable for a keyboard user and the red states with a dotted border are inaccessible to the user. 
 
 <img src="./docs/images/keyboard-graph.png" width="400" height="250" alt="Keyboard vs Omni Graph">
 
@@ -44,7 +44,7 @@ See the [setup](./docs/setup.md) page for full details and options to install `d
 % chromedriver -v # Outputs chromedriver version
 ```
 2. (Recommended) Setup a python virtual environment using your favorite env manager.
-3. Install dependencies
+3. Install dependencies. **NOTE**: We currently require python 3.7 or 3.8.
 ```bash
 % pip install -r requirements.txt
 ```
