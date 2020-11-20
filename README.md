@@ -17,7 +17,7 @@ A common example for this process might be a web page with a dropdown navbar tha
 
 The basis for how Demodocus works is quite approachable and can help to get in the mindset for what we are attempting to do.
 
-When Demodocus first arrives at a site, it will first find all elements that it things are interactable and will attempt to exercise them. We do this intial crawl with our `Omniuser`, which is modeled as an "omni-potent" user. That is, it can do any and everything with no restriction on the content. At the end of this step, we will have built our `Omni-graph` which will serve as our frame of reference later on. For a simple web page it may look like:
+When Demodocus first arrives at a site, it will first find all elements that it thinks are interactable and will attempt to exercise them. We do this intial crawl with our `Omniuser`, which is modeled as an "omni-potent" user. That is, it can do any and everything with no restriction on the content. At the end of this step, we will have built our `Omni-graph` which will serve as our frame of reference later on. For a simple web page it may look like:
 
 <img src="./docs/images/omni-graph.png" width="400" height="250" alt="Omni bots graph">
 
