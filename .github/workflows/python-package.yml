@@ -3,7 +3,12 @@
 
 name: Python package
 
-on: [push, pull_request]
+on: 
+  push:
+  pull_request:
+  schedule:
+    # every day at 5:25am
+    - cron: '25 5 * * *'
 
 jobs:
   build:
@@ -27,6 +32,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ~/.cache/pip
+        # specify both os and python-version to limit possibility of incorrect
+        # re-use on one platform / multiple pythons
         key: ${{ runner.os }}-${{ runner.python-version }}-pip-${{ hashFiles('requirements.txt') }}
 
     - name: Install Python dependencies
@@ -36,7 +43,7 @@ jobs:
       run: |
         pylint demodocusfw/ --rcfile .pylintrc --exit-zero
 
-    - name: Test with unittest
+    - name: Test with unittest, default configuration
       run: |
         python -m unittest demodocusfw/tests/dom_manipulations.py
         python -m unittest demodocusfw/tests/test_template.py
@@ -46,9 +53,14 @@ jobs:
         python -m unittest demodocusfw/tests/test_web_access_chrome.py
         python -m unittest demodocusfw/tests/event_tracking.py
         python -m unittest demodocusfw/tests/animation.py
-        DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/test_crawler.py
         python -m unittest demodocusfw/tests/keyboard_crawl.py
-        DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/crawl_graph.py
         python -m unittest demodocusfw/tests/reduced_crawl.py
-        DEM_RUN_EXTENDED=False python -m unittest demodocusfw/tests/test_analysis.py
         python -m unittest demodocusfw/tests/keyboard_eval.py
+
+    - name: Test with unittest, not DEM_RUN_EXTENDED
+      env: 
+        DEM_RUN_EXTENDED: "False"
+      run: |
+        python -m unittest demodocusfw/tests/test_crawler.py
+        python -m unittest demodocusfw/tests/crawl_graph.py
+        python -m unittest demodocusfw/tests/test_analysis.py
