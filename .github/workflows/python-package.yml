@@ -1,0 +1,67 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python package
+
+on: 
+  push:
+  pull_request:
+  schedule:
+    # every day at 5:25am
+    - cron: '25 5 * * *'
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+          # os: [macos-latest, ubuntu-latest, windows-latest]
+          os: [macos-latest, ubuntu-latest]
+          python-version: ['3.7', '3.8', '3.9']
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        # specify both os and python-version to limit possibility of incorrect
+        # re-use on one platform / multiple pythons
+        key: ${{ runner.os }}-${{ runner.python-version }}-pip-${{ hashFiles('requirements.txt') }}
+
+    - name: Install Python dependencies
+      uses: py-actions/py-dependency-install@v2
+
+    - name: Lint with pylint
+      run: |
+        pylint demodocusfw/ --rcfile .pylintrc --exit-zero
+
+    - name: Test with unittest, default configuration
+      run: |
+        python -m unittest demodocusfw/tests/dom_manipulations.py
+        python -m unittest demodocusfw/tests/test_template.py
+        python -m unittest demodocusfw/tests/compare.py
+        python -m unittest demodocusfw/tests/reachable.py
+        python -m unittest demodocusfw/tests/selenium_integration.py
+        python -m unittest demodocusfw/tests/test_web_access_chrome.py
+        python -m unittest demodocusfw/tests/event_tracking.py
+        python -m unittest demodocusfw/tests/animation.py
+        python -m unittest demodocusfw/tests/keyboard_crawl.py
+        python -m unittest demodocusfw/tests/reduced_crawl.py
+        python -m unittest demodocusfw/tests/keyboard_eval.py
+
+    - name: Test with unittest, not DEM_RUN_EXTENDED
+      env: 
+        DEM_RUN_EXTENDED: "False"
+      run: |
+        python -m unittest demodocusfw/tests/test_crawler.py
+        python -m unittest demodocusfw/tests/crawl_graph.py
+        python -m unittest demodocusfw/tests/test_analysis.py

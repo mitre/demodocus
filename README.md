@@ -1,5 +1,7 @@
 # [Demodocus](https://mitre.github.io/demodocus/)
 
+![Python package](https://github.com/mitre/demodocus/workflows/Python%20package/badge.svg)
+
 This framework is intended to extend the capabilities of current automated accessibility testing tools into the realm of dynamic web content. 
 
 In the current workflow, most websites are evaluated for accessibility using:
