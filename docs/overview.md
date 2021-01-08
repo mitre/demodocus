@@ -48,6 +48,23 @@ users is increasingly difficult given the dynamic nature of representations.
 
 Read more in our [literature review paper](https://arxiv.org/pdf/1908.02804.pdf).
 
+## Project Structure
+
+The project is made up of three main parts, each of which could be their own repository, but were included here together for ease at the current time. These include the Demodocus Framework, the Graph App, and the Web App. Short descriptions and their intended use are given below. In sum, the various parts hope to provide functionality for automatically crawling a page's interactive elements for accessibility violations and then to provide analysis and diagnostic support both for technical and non-technical users. 
+
+### Demodocus Framework
+
+This is the primary function of the repository, responsible for all of the crawling and data collection on web sites. It is a selenium based web-crawler capable of triggering events on pages and registering the impacts of those actions in order to find accessibility violations. Most of the code for this part is found in the `demodocusfw` or `util_scripts` folders, with the exception of `crawler.py`, which acts as the runner for the program.
+
+### Graph App
+
+The graph app is a R-shiny visualization application meant to help developers understand the network structure and technical details of crawls made by the Demodocus Framework. It includes a lot of technical information about the crawls along the edges and nodes of the displayed graph that can be used for developer analysis and debugging (e.g., what events can trigger the state transition). It will also allow users to click on various nodes to view a screenshot of the state that the node represents. 
+
+### Web App
+
+The web app is a vue based visualization of the crawl that is meant to intuitively display the results of a Demodocus crawl to non-technical analysts. Instead of displaying the whole graph network, the web app uses a leaflet map that allows the users to view errors where they occured on a page. If a sequence of actions was needed to find the violation, then the map allows the users to "simulate" the actions on the screenshot until they reach the state with the violation. This allows them to trace the sequence of actions that led to a violation. 
+
+
 ## Setup
 
 See [Setup](setup.md) for information on how to get started.
