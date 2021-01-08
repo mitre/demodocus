@@ -28,7 +28,7 @@ installed in a `$PATH` location, it should fire up just fine.
 Clone this repository and navigate into it.
 
 ```bash
-% git clone git@gitlab.mitre.org:demodocus/demodocus-framework.git
+% git clone git@github.com:mitre/demodocus.git # Requires ssh key
 % cd demodocus-framework
 ```
 

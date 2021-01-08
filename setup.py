@@ -38,7 +38,7 @@ from setuptools import find_packages, setup
 # Package meta-data.
 NAME = 'demodocusfw'
 DESCRIPTION = 'demodocusfw generates a full state graph for a web site'
-URL = 'https://gitlab.mitre.org/demodocus/demodocus-framework'
+URL = 'https://github.com/mitre/demodocus.git'
 EMAIL = 'tbostic@mitre.org'
 AUTHOR = 'Trevor Bostic'
 REQUIRES_PYTHON = '>=3.8.0'

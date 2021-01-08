@@ -20,7 +20,7 @@ by Demodocus to render a visual map of the page elements that caused issues.
 
 ### Node Dependencies
 
-The front end was developed using NodeJS 12.16.3. Once node is installed, you should be able to install all of the dependencies by running:
+The front end was developed using NodeJS 12.16.3. Before installing, ensure that you are in the `%DEMODOCUS_FRAMEWORK%/web-app` directory so that the web app can find the dependencies. After installing node and changing directories, you can install the dependencies by running:
 
 ```bash
 % npm install
