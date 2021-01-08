@@ -1,6 +1,6 @@
 # Overview
 
-The Demodocus Framework enables automated analysis of web site accessibility.
+The Demodocus (pronounced deh-MAH-do-kus) Framework enables automated analysis of web site accessibility.
 More than just a static page analyzer, Demodocus will simulate real users with
 a variety of abilities as they navigate through all potential page states,
 including invoking dynamic changes within single pages. Demodocus can then

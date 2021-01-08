@@ -1,10 +1,11 @@
+// Example Jenkins build file, you will need to update the repository location and authentication
 pipeline {
     agent any
     options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
         retry(2)
         timeout(time: 2, unit: 'HOURS')
-        gitLabConnection("https://jenkins.mitre.org/project/access-automation/demodocus-framework-pipeline/${env.BRANCH_NAME}")
+        gitLabConnection("${CONNECTION URL HERE}/${env.BRANCH_NAME}")
     }
     triggers {
         cron('H H(1-5) * * *') // Run every morning between 1 and 6
@@ -31,7 +32,7 @@ pipeline {
                         trackingSubmodules: false]],
                     submoduleCfg: [],
                     userRemoteConfigs: [[credentialsId: 'gitlab_project_demodocus_framework',
-                    url: 'git@gitlab.mitre.org:demodocus/demodocus-framework.git']]
+                    url: "${REPOSITORY URL HERE}"]]
                 ])
             }
         }
