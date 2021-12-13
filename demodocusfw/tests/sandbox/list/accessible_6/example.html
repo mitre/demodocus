@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accessible List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>Cake ingredients</p>
+<button id="show">Show All</button>
+<button id="close">Close All</button>
+<button id="toggle">Toggle</button>
+<ul class="list">
+    <li class="ingredient" tabindex="0">
+        Eggs
+        <ul style="display: none;">
+            <li tabindex="0">Quantity: 4 large eggs</li>
+            <li tabindex="0">Type: From golden hens</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Flour
+        <ul style="display: none;">
+            <li tabindex="0">Quantity: 3 Cups</li>
+            <li tabindex="0">Type: All-purpose</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Baking Powder
+        <ul style="display: none;">
+            <li tabindex="0">Quantity: 2 teaspoons</li>
+            <li tabindex="0">Type: Powdery</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Sugar
+        <ul style="display: none;">
+            <li tabindex="0">Quantity: 2 cups</li>
+            <li tabindex="0">Type: White</li>
+        </ul>
+    </li>
+</ul>
+
+
+<style>
+    .ingredient {
+        cursor: pointer;
+    }
+
+    .ingredient > ul {
+        display: none;
+        cursor: text;
+    }
+</style>
+
+<script>
+    $(function(){
+        let showAll = $('#show');
+        let closeAll= $('#close');
+        let toggle = $('#toggle');
+        let ingredients = $('.ingredient');
+        let listItems = $('.list').find('li');
+        console.log(listItems.index(listItems[5]));
+
+        showAll.on('click', function(){
+            ingredients.children().css('display', 'block');
+        });
+
+        closeAll.on('click', function(){
+            ingredients.children().css('display', 'none');
+        });
+
+        toggle.on('click', function(){
+            ingredients.children().toggle();
+        });
+
+        // Use click, enter, or space to toggle sub lists
+        ingredients.on('click keyup', function(event)
+        {
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' '))
+            {
+                $(event.target).children('ul').toggle();
+            }
+        });
+
+        listItems.on('keyup', function(event){
+            let target = $(event.target);
+            let key = event.key;
+
+            switch(key) {
+                case 'ArrowUp':
+                    $(getNextVisibleItem(event.target)).focus();
+                    break;
+                case 'ArrowDown':
+                    $(getNextVisibleItem(event.target, false)).focus();
+                    break;
+                case 'ArrowRight':
+                    if (target.children('ul').css('display') === 'none'){
+                        target.children('ul').toggle();
+                    }
+                    else if (target.find('li').length > 0){
+                        target.find('li').first().focus();
+                    }
+                    break;
+                case 'ArrowLeft':
+                    if (target.children('ul').css('display') === 'block'){
+                        target.children('ul').toggle();
+                    }
+                    else if (target.parents('li').length > 0){
+                        target.parents('li').focus();
+                    }
+                    break;
+            }
+        });
+
+        function getNextVisibleItem(currentItem, goingUp = true){
+            let curIndex = listItems.index(currentItem);
+
+            if(goingUp){
+                curIndex -= 1; // Check previous item first
+                for(curIndex; curIndex >= 0; curIndex--){
+                    if($(listItems[curIndex]).is(':visible')){
+                        return listItems[curIndex];
+                    }
+                }
+            }
+            else {
+                curIndex += 1; // Check next item first
+                for(curIndex; curIndex < listItems.length; curIndex++){
+                    if($(listItems[curIndex]).is(':visible')){
+                        return listItems[curIndex];
+                    }
+                }
+            }
+
+            // If no other option found, stay with current item
+            return currentItem;
+        }
+
+    });
+</script>
+</body>
+</html>

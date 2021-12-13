@@ -1,0 +1,10 @@
+Example Title: List_Medium_Accessible_1
+
+Description
+--------------------------------
+The list elements are now tabbable and will open on a spacebar or enter keyup event
+
+Expected Results
+--------------------------------
+All bots should be able to interact and use these lists, and find the different states. There should be multiple
+edges going from a state where the list is open and closed since there are multiple ways to complete the action.

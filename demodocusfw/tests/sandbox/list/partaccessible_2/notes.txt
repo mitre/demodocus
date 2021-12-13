@@ -1,0 +1,9 @@
+Description
+--------------------------------
+In this example there will be a "final" state that god bot can get to in one event, but keyboard bot will be
+required to traverse through multiple states before getting to the final state.
+
+Expected Results
+--------------------------------
+Both bots will be able to reach the state where all list elements are open, but god bot will have a way to do it in
+one action vs the 4 actions it will take keyboard bot.

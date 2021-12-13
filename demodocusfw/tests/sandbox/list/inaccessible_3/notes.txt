@@ -1,0 +1,14 @@
+Example Title: List_Easy_Inaccessible_1
+
+Description
+-------------------------
+Same as inaccessible_2, except that the sub menu under the first bullet now has keyboard controls.
+
+Expected Results
+-------------------------
+The God and Human bots should catch the change in styling for the sub bullets.
+
+The keyboard user should be unable to interact with the list items since they are not tabbable.
+
+Interestingly, a user with JAWS is able to interact with the list since JAWS uses its own internal focus.
+

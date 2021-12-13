@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accessible List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>Cake ingredients</p>
+<ul>
+    <li class="ingredient" tabindex="0">
+        Eggs
+        <ul style="display: none;">
+            <li>Quantity: 4 large eggs</li>
+            <li>Type: From golden hens</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Flour
+        <ul style="display: none;">
+            <li>Quantity: 3 Cups</li>
+            <li>Type: All-purpose</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Baking Powder
+        <ul style="display: none;">
+            <li>Quantity: 2 teaspoons</li>
+            <li>Type: Powdery</li>
+        </ul>
+    </li>
+    <li class="ingredient" tabindex="0">
+        Sugar
+        <ul style="display: none;">
+            <li>Quantity: 2 cups</li>
+            <li>Type: White</li>
+        </ul>
+    </li>
+</ul>
+
+
+<style>
+    .ingredient {
+        cursor: pointer;
+    }
+
+    .ingredient > ul {
+        display: none;
+        cursor: text;
+    }
+</style>
+
+<script>
+    $(function(){
+        let ingredients = $('.ingredient');
+
+        ingredients.on('click keyup', function(event)
+        {
+            let target = $(event.target);
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' '))
+            {
+                target.children().css('display', 'block');
+            }
+        })
+    });
+</script>
+</body>
+</html>

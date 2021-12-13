@@ -1,0 +1,10 @@
+Example Title: List_Medium_Accessible_3
+
+Description
+--------------------------------
+Similar to list_medium_accessible_1, with the inclusion of a show all and close all button. There won't be any new
+available states, but there should be a few new edges on how to get to the fully closed and fully opened states.
+
+Expected Results
+--------------------------------
+All bots should be able to find every state.

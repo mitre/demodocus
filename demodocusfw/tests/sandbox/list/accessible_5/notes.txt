@@ -1,0 +1,10 @@
+Example Title: List_Medium_Accessible_4
+
+Description
+--------------------------------
+Similar to list_medium_accessible_3, with the inclusion of a toggle button which will hide the visible and show
+the currently hidden.
+
+Expected Results
+--------------------------------
+All bots should be able to find every state. There should be significantly more edges between states now.

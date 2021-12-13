@@ -1,0 +1,10 @@
+Example Title: List_Medium_Accessible_5
+
+Description
+--------------------------------
+Similar to list_medium_accessible_4, with the inclusion of arrow keys can now be used to navigate and open/close the
+lists.
+
+Expected Results
+--------------------------------
+All bots should be able to find every state. There should be significantly more edges between states now.

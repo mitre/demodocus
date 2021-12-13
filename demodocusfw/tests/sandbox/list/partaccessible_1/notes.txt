@@ -1,0 +1,13 @@
+Example Title: List_Medium_Partaccessible_1
+
+Description
+--------------------------------
+Similar to list_medium_accessible_1, but now only the first and third bullet points have click and keyup handlers
+to deal with keyboard users. The second and fourth list items only have the click handler, and thus cannot recieve enter
+or spacebar events.
+
+Expected Results
+--------------------------------
+God and norm bots should be able to reach every state.
+
+Keyboard bot will not be able to reach the states where the second and fourth list items are expanded.

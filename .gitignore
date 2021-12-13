@@ -121,7 +121,6 @@ dmypy.json
 *.gml
 .DS_Store
 .idea
-list/
 /docs/html/*
 /docs/latex/*
 localconfig/*

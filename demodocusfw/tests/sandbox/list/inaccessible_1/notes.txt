@@ -1,0 +1,15 @@
+Example Title: List_Easy_Inaccessible_1
+
+Description
+-------------------------
+In this example you can click on each of the ingredients and it will toggle some dropdown info.
+Unlike simple_list, this example's start state has explicit styling set so that the page source after opening and closing an item will be identical to the start state.
+
+Expected Results
+-------------------------
+The God and Human bots should catch the change in styling for the sub bullets.
+
+The keyboard user should be unable to interact with the list items since they are not tabbable.
+
+Interestingly, a user with JAWS is able to interact with the list since JAWS uses its own internal focus.
+

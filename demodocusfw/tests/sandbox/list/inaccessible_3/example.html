@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expandable List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<p>Cake ingredients</p>
+<ul>
+    <li class="ingredient">
+        Eggs
+        <ul style="display: none;">
+            <li>Quantity: 4 large eggs</li>
+            <li class="ingredient-extension" tabindex="0">Type: From golden hens
+                <ul style="display: none;">
+                    <li class="ingredient-extension" tabindex="0">Yellow Hens
+                        <ul style="display: none;">
+                            <li>Prettyiness: Meh</li>
+                            <li>Athleticism: Good</li>
+                            <li>Overall Ballerness: Low</li>
+                        </ul>
+                    </li>
+                    <li class="ingredient-extension" tabindex="0">Orange Hens
+                        <ul style="display: none;">
+                            <li>Prettyiness: Better</li>
+                            <li>Athleticism: Meek</li>
+                            <li>Overall Ballerness: Swiggity</li>
+                        </ul>
+                    </li>
+                    <li class="ingredient-extension" tabindex="0">Pheonix Hens
+                        <ul style="display: none;">
+                            <li>Prettyiness: Superb</li>
+                            <li>Athleticism: Like lebron</li>
+                            <li>Overall Ballerness: All of it</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li class="ingredient">
+        Flour
+        <ul style="display: none;">
+            <li>Quantity: 3 Cups</li>
+            <li>Type: All-purpose</li>
+        </ul>
+    </li>
+    <li class="ingredient">
+        Baking Powder
+        <ul style="display: none;">
+            <li>Quantity: 2 teaspoons</li>
+            <li>Type: Powdery</li>
+        </ul>
+    </li>
+    <li class="ingredient">
+        Sugar
+        <ul style="display: none;">
+            <li>Quantity: 2 cups</li>
+            <li>Type: White</li>
+        </ul>
+    </li>
+</ul>
+
+
+<style>
+    .ingredient, .ingredient-extension {
+        cursor: pointer;
+    }
+
+    .ingredient > ul {
+        display: none;
+        cursor: text;
+    }
+</style>
+
+<script>
+    $(function(){
+        let ingredients = $('.ingredient');
+        let ingredient_extension = $('.ingredient-extension');
+
+        ingredients.on('click', function(event){
+            $(event.target).children('ul').toggle();
+            ingredient_extension.children('ul').hide();
+        });
+
+        ingredient_extension.on('click keyup', function(event){
+
+            if(event.type === "click" || (event.key === 'Enter' || event.key === ' '))
+            {
+                $(event.target).children('ul').toggle();
+                ingredients.slice(1).children('ul').hide();
+                event.stopPropagation();
+            }
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Example Title: List_Easy_Accessible_1
+
+Description
+-------------------------
+This is a purely static version of the list example with no interactions. This will be used to make sure the
+bot is not finding states that do not exist.
+
+Expected Results
+-------------------------
+All bots should find that none of the components are interactable and that there is only one state.
